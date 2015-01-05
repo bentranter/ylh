@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Year Long Hackathon</title>
-    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://localhost:8080</link>
+    <atom:link href="http://bentranter.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://bentranter.github.io</link>
     <description>By Ben Tranter</description>
     <pubDate>Sun, 04 Jan 2015 10:00:00 -0500</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Deploying a Static Site to GitHub Pages with Wintersmith</title>
-      <link>http://localhost:8080/articles/week-1/</link>
+      <link>http://bentranter.github.io/articles/week-1/</link>
       <pubDate>Sun, 04 Jan 2015 10:00:00 -0500</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/week-1/</guid>
+      <guid isPermaLink="true">http://bentranter.github.io/articles/week-1/</guid>
       <description>&lt;p&gt;I figured I’d keep it simple this week, so let’s get a static site up and running on GitHub Pages, with Node.js and Wintersmith&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;. Anytime I use a new or different technology, I’ll do my best to explain how to install it. Let’s get started by installing Node.&lt;/p&gt;
 &lt;h5 id=&quot;installing-node&quot;&gt;Installing Node&lt;/h5&gt;
 &lt;p&gt;Head on over to &lt;a href=&quot;http://http://nodejs.org/&quot;&gt;nodejs.org&lt;/a&gt; and click the ‘Install’ button. From there, just run the installer once you’ve downloaded it, and you should be good to go. To test it out, open your console. On a Mac, its just called Terminal and can be found in your applications, or by searching with spotlight, and on Windows, its called Console and can be found from the start menu, or by searching for it (I haven’t used Windows in a while, please correct me if I’m wrong).&lt;/p&gt;
@@ -70,9 +70,9 @@ $ git push
     </item>
     <item>
       <title>Hello, World!</title>
-      <link>http://localhost:8080/articles/hello-world/</link>
+      <link>http://bentranter.github.io/articles/hello-world/</link>
       <pubDate>Wed, 31 Dec 2014 19:00:00 -0500</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/hello-world/</guid>
+      <guid isPermaLink="true">http://bentranter.github.io/articles/hello-world/</guid>
       <description>&lt;p&gt;As long as I’ve been programming (which is around three years as of writing), I’ve always been making things. Most things have been pretty lame and broken, but the creative process is the main reason I like programming&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;. Its like playing with lego, except you can’t step on a program and cut your foot open (at least not literally).&lt;/p&gt;
 &lt;p&gt;One thing I’ve always struggled with is shipping. Out of all the things I’ve made, I’ve never had the confidence to actually release them out into the world. The point of this project is for me to force myself to become better at shipping, as well as to give me platform to share all the dumb stuff I’ve made with the world.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Every Sunday of this year, I’ll be releasing a project (either new, or a significant iteration) along with some words about how it was created.&lt;/strong&gt;&lt;/p&gt;

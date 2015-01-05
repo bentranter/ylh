@@ -178,7 +178,7 @@ nav a {
   font-size: 12px;
 }
 
-.menu {
+.desktop-menu, .mobile-menu {
   width: 100%;
 }
 
@@ -376,6 +376,10 @@ code.lang-markdown .bullet {
 
 @media (max-width: 690px) {
 
+  .desktop-menu {
+    display: none;
+  }
+
   .content-wrap {
     width: auto;
     margin: 0;
@@ -396,5 +400,11 @@ code.lang-markdown .bullet {
   }
   footer .about p {
     margin-bottom: 1em;
+  }
+}
+
+@media (min-width: 691px) {
+  .mobile-menu {
+    display: none;
   }
 }
