@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Year Long Hackathon
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="By Ben Tranter">
+    <link rel="stylesheet" href="/css/octicons.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <nav><span class="menu"><span class="left"><a href="http://localhost:8080" class="title">Year Long Hackathon</a><a href="http://localhost:8080">Home</a><a href="http://localhost:8080/articles/hello-world">About</a><a href="mailto:bwtrante@lakeheadu.ca">Contact</a></span><span class="right"><a href="https://github.com/bentranter">GitHub</a></span></span></nav>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <h4 class="article-title">Deploying a Static Site to GitHub Pages with Wintersmith</h4>
+          <h6 class="subtitle">Or, how this site was built</h6>
+          <section class="content"><p>I figured I’d keep it simple this week, so let’s get a static site up and running on GitHub, with Node.js and Wintersmith<span class="more"></span>. Anytime I use a new or different technology, I’ll do my best to explain how to install it. Let’s get started by installing&nbsp;Node.</p>
+<h5 id="installing-node">Installing&nbsp;Node</h5>
+<p>Head on over to <a href="http://http://nodejs.org/">nodejs.org</a> and click the ‘Install’ button. From there, just run the installer once you’ve downloaded it, and you should be good to go. To test it out, open your console. On a Mac, its just called Terminal and can be found in your applications, or by searching with spotlight, and on Windows, its called Console and can be found from the start menu, or by searching for it (I haven’t used Windows in a while, please correct me if I’m&nbsp;wrong).</p>
+<p>You can test to see if Node installed correctly by&nbsp;running:</p>
+<pre><code class="lang-bash">$ node
+</code></pre>
+<h6 id="note-you-don-t-actually-type-the-symbol-its-just-used-to-inform-you-that-you-should-be-running-a-command-instead-of-typing-code-">Note: you don’t actually type the ‘$’ symbol, its just used to inform you that you should be running a command instead of typing&nbsp;code.</h6>
+<p>If it works, the Node <span class="caps">REPL</span> will start. You can hit Control-C on any system to exit the Node REPL. Congrats! You’ve installed&nbsp;Node.js.</p>
+<h5 id="npm"><span class="caps">NPM</span></h5>
+<p><span class="caps">NPM</span> stands for ‘Nice People Matter’, or ‘Node Package Manager’ (whichever you prefer). Its a package manager for JavaScript. NPM should install automatically when you install Node, but let’s make sure its there. Just&nbsp;run:</p>
+<pre><code class="lang-bash">$ npm
+</code></pre>
+<p>As long as you don’t get a ‘command not found’ type of error, everything is good. Now, we’ll install Wintersmith using&nbsp;<span class="caps">NPM</span>.</p>
+<h5 id="install-wintersmith">Install&nbsp;Wintersmith</h5>
+<p>This is as easy as running one&nbsp;command:</p>
+<pre><code>$ npm install wintersmith -g
+</code></pre><p>Where <code>install</code> means download a package to your computer, <code>-g</code> is a flag that instructs the package to be downloaded globally, so you can use that package anywhere (as opposed to only within a certain project directory), and finally <code>wintersmith</code> is the name of the package we want to&nbsp;install.</p>
+<p>Note that installing wintersmith may take an unusually long time to install (like more than five minutes), but that’s okay, nothing’s going wrong so just be patient&nbsp;:)</p>
+<h5 id="generate-a-new-site">Generate A New&nbsp;Site</h5>
+<p>This is as simple as&nbsp;running:</p>
+<pre><code class="lang-bash">$ wintersmith new project-name
+</code></pre>
+<p>where <code>project-name</code> is obviously the name of your site. From here, enter the directory of your new site and preview it by&nbsp;running:</p>
+<pre><code class="lang-bash">$ <span class="built_in">cd</span> project-name
+$ wintersmith preview
+</code></pre>
+<p>and open up <code>localhost:8080</code> in a web browser. You’ll see a website built with the default&nbsp;theme.</p>
+<h5 id="writing-a-new-post">Writing A New&nbsp;Post</h5>
+<p>Writing a new post is as simple as creating a new folder in the <code>articles</code> directory, and creating a new markdown document within the new directory. To do this, we’ll stop the server (type Control-C), and then run a few simple&nbsp;commands:</p>
+<pre><code class="lang-bash">$ <span class="built_in">cd</span> contents/articles
+$ mkdir new-post
+$ <span class="built_in">cd</span> new-post
+$ touch new-post.md
+</code></pre>
+<p>What we’ve done here is change into the directory named <code>articles</code>, created a new folder using the <code>$ mkdir</code> command, navigated to that folder, and created a new markdown document using the <code>$ touch</code> command. From here, you should go to a sample post to copy/paste the metadata (the stuff at the top of the document in between the <code>---</code>‘s) and replace it with your own info. At this point, you can write your post! Check out this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">mardown cheatsheet</a> for a handy reference on how to write in markdown if you’re new to&nbsp;it.</p>
+</section><a href="www.google.com" target="_blank" class="repo">View Source Code</a>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <section class="about"><p>Year Long Hackthon is an idea I had to force myself to get better at shipping code. Every Sunday of 2015, I’ll release a new, or significant iteration of a project. You can keep up on <a href="https://github.com/bentranter">GitHub</a>, or subscribe to the <a href="http://yearlonghackathon.com/feed.xml">RSS Feed</a>. If you want to follow me elsewhere, I’m on <a href="https://twitter.com/0xBen">Twitter</a>, and do all my non-technical writing on <a href="https://medium.com/@0xben">Medium</a>.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2015 Ben Tranter &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a></p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

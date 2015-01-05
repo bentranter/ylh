@@ -1,0 +1,400 @@
+/* Box Sizing The Paul Irish Way */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Lazy lazy lazy reset */
+
+p, a, img, ul, ol, dl, table, blockquote, pre {
+  margin: 0;
+  padding: 0; 
+  border: 0;
+  margin-bottom: 16px;
+}
+
+/* Element Styles */
+
+body {
+  background-color: #fff;
+  margin: 0;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #37474F;
+  font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.content-wrap {
+  width: 40em;
+  margin: 0px 64px 0px;
+}
+
+a {
+  color: #03A9F4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #039BE5;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+pre {
+  font-size: 0.9em;
+  overflow: auto;
+  background: #fff;
+  border: 1px dashed #d2d2d2;
+  border-radius: 0.25em;
+  margin-bottom: 1.8em;
+  padding: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 1em;
+  color: #777; /* Hmm */
+}
+
+ol, ul {
+  padding: 0;
+  padding-left: 2em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-roman;
+}
+
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+  font-style: italic;
+}
+
+blockquote>:first-child {
+  margin-top: 0;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #ECEFF1;
+  border: 0 none;
+}
+
+hr:before {
+  display: table;
+  content: "";
+}
+
+hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+/* Menu */
+
+nav {
+  -webkit-display: flex;
+  -webkit-display: -webkit-flex;
+  display: flex;
+  display: -webit-flex;
+  border-bottom: 1px solid #d2d2d2;
+  box-shadow: 1px 1px 1px #eee;
+  margin-bottom: 4px;
+}
+
+nav a {
+  margin: 22px 16px 12px;
+  color: #333;
+  font-size: 12px;
+}
+
+.menu {
+  width: 100%;
+}
+
+.left, .right {
+  -webkit-display: flex;
+  -webkit-display: -webkit-flex;
+  display: flex;
+  display: -webit-flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.title {
+  margin-top: 16px;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: -0.02rem;
+}
+
+.title:hover {
+  color: #333;
+}
+
+/* Article Styles */
+
+h6.subtitle {
+  color: rgba(0,0,0,0.3);
+  font-weight: normal;
+}
+
+header {
+  margin-bottom: 16px;
+}
+
+article {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 25px 0 16px;
+}
+
+.article-title {
+  font-size: 1.25em;
+  color: #333;
+  font-weight: bold;
+  margin-top: 0;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.date {
+  font-size: 14px;
+  color: #777;
+}
+
+.time-published {
+  color: #F48FB1;
+}
+
+.repo {
+  display: block;
+  margin-bottom: 0px;
+  text-align: center;
+  color: rgba(0,0,0,0.3);
+}
+
+/* Footer */
+
+footer {
+  margin: 3em 0;
+}
+
+footer .nav {
+  text-align: center;
+  margin-top: 5em;
+  margin-bottom: 3.5em;
+}
+
+footer .nav a {
+  padding: 0 0.5em;
+  font-size: 1.2em;
+  text-decoration: underline;
+}
+
+footer .about {
+  border-top: 1px solid #d2d2d2;
+  padding: 2.2em 3em;
+  font-size: 0.7em;
+}
+
+footer .copy {
+  text-align: center;
+  font-size: 0.7em;
+  font-style: italic;
+  margin-top: 1em;
+}
+
+footer .copy, footer .copy a {
+  color: #8e8e8e;
+}
+
+/* code styling */
+
+code {
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 0.85em;
+  color: #000;
+}
+
+pre code {
+  display: block;
+  line-height: 1.1;
+}
+
+p code {
+  padding: 0.1em 0.3em 0.2em;
+  border-radius: 0.3em;
+  position: relative;
+  background: #fffff3;
+  white-space: nowrap;
+}
+
+/* syntax hl stuff */
+
+code.lang-markdown {
+  color: #424242;
+}
+
+code.lang-markdown .header,
+code.lang-markdown .strong {
+  font-weight: bold;
+}
+
+code.lang-markdown .emphasis {
+  font-style: italic;
+}
+
+code.lang-markdown .horizontal_rule,
+code.lang-markdown .link_label,
+code.lang-markdown .code,
+code.lang-markdown .header,
+code.lang-markdown .link_url {
+  color: #555;
+}
+
+code.lang-markdown .blockquote,
+code.lang-markdown .bullet {
+  color: #bbb;
+}
+
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+.tomorrow-comment, pre .comment, pre .title {
+  color: #8e908c;
+}
+
+.tomorrow-red, pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo {
+  color: #c82829;
+}
+
+.tomorrow-orange, pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+  color: #f5871f;
+}
+
+.tomorrow-yellow, pre .class, pre .ruby .class .title, pre .css .rules .attribute {
+  color: #eab700;
+}
+
+.tomorrow-green, pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+  color: #718c00;
+}
+
+.tomorrow-aqua, pre .css .hexcolor {
+  color: #3e999f;
+}
+
+.tomorrow-blue, pre .function, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
+  color: #4271ae;
+}
+
+.tomorrow-purple, pre .keyword, pre .javascript .function {
+  color: #8959a8;
+}
+
+/* Media queries */
+
+@media (max-width: 690px) {
+
+  .content-wrap {
+    width: auto;
+    margin: 0;
+    padding: 0 1em;
+  }
+
+  footer .nav {
+    margin: 1em 0;
+  }
+
+  footer .about {
+    padding: 0;
+    padding-top: 1.6em;
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    -ms-column-count: 1;
+    column-count: 1;
+  }
+  footer .about p {
+    margin-bottom: 1em;
+  }
+}
