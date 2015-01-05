@@ -17,7 +17,7 @@
         <article class="article">
           <h4 class="article-title">Deploying a Static Site to GitHub Pages with Wintersmith</h4>
           <h6 class="subtitle">Or, how this site was built</h6>
-          <section class="content"><p>I figured I’d keep it simple this week, so let’s get a static site up and running on GitHub, with Node.js and Wintersmith<span class="more"></span>. Anytime I use a new or different technology, I’ll do my best to explain how to install it. Let’s get started by installing&nbsp;Node.</p>
+          <section class="content"><p>I figured I’d keep it simple this week, so let’s get a static site up and running on GitHub Pages, with Node.js and Wintersmith<span class="more"></span>. Anytime I use a new or different technology, I’ll do my best to explain how to install it. Let’s get started by installing&nbsp;Node.</p>
 <h5 id="installing-node">Installing&nbsp;Node</h5>
 <p>Head on over to <a href="http://http://nodejs.org/">nodejs.org</a> and click the ‘Install’ button. From there, just run the installer once you’ve downloaded it, and you should be good to go. To test it out, open your console. On a Mac, its just called Terminal and can be found in your applications, or by searching with spotlight, and on Windows, its called Console and can be found from the start menu, or by searching for it (I haven’t used Windows in a while, please correct me if I’m&nbsp;wrong).</p>
 <p>You can test to see if Node installed correctly by&nbsp;running:</p>
@@ -51,8 +51,26 @@ $ mkdir new-post
 $ <span class="built_in">cd</span> new-post
 $ touch new-post.md
 </code></pre>
-<p>What we’ve done here is change into the directory named <code>articles</code>, created a new folder using the <code>$ mkdir</code> command, navigated to that folder, and created a new markdown document using the <code>$ touch</code> command. From here, you should go to a sample post to copy/paste the metadata (the stuff at the top of the document in between the <code>---</code>‘s) and replace it with your own info. At this point, you can write your post! Check out this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">mardown cheatsheet</a> for a handy reference on how to write in markdown if you’re new to&nbsp;it.</p>
-</section><a href="www.google.com" target="_blank" class="repo">View Source Code</a>
+<p>What we’ve done here is change into the directory named <code>articles</code>, created a new folder using the <code>$ mkdir</code> command, navigated to that folder, and created a new markdown document using the <code>$ touch</code> command. From here, you should go to a sample post to copy/paste the metadata (the stuff at the top of the document in between the <code>---</code>‘s) and replace it with your own info. At this point, you can write your post! Check out this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">mardown cheatsheet</a> for a handy reference on how to write in markdown if you’re new to it. Start your server again once you’ve written a post to preview&nbsp;it.</p>
+<h5 id="building-your-static-site-for-deployment">Building Your Static Site For&nbsp;Deployment</h5>
+<p>Wintersmith makes this really easy. Just&nbsp;run:</p>
+<pre><code class="lang-bash">wintersmith build
+</code></pre>
+<p>This will generate a site made up of static <span class="caps">HTML</span> and CSS pages. The site will appear in a new folder called <code>build</code>, located at the top of your new sites directory. This new site is what GitHub requires to host our&nbsp;site.</p>
+<h5 id="deploying-to-github-pages">Deploying to GitHub&nbsp;Pages</h5>
+<h6 id="note-you-ll-need-git-installed-for-this-section-to-be-possible-that-is-outside-the-scope-of-this-tutorial-but-a-simple-google-search-should-get-you-sorted-out-">Note: You’ll need git installed for this section to be possible. That is outside the scope of this tutorial, but a simple Google search should get you sorted out&nbsp;:)</h6>
+<p>First, make sure you’ve actually signed up for a GitHub account. Just got to <a href="https://github.com">GitHub</a> to do that, it’s really easy. From there, find the ‘+’ at the top beside your name, and click ‘New&nbsp;Repository’.</p>
+<p>Name the new repo <code>username.github.io</code>. It must match your username exactly, or this won’t work. Once that’s done, you’ll need to clone the repository&nbsp;locally:</p>
+<pre><code class="lang-bash">$ git clone https://github.com/username/username.github.io
+</code></pre>
+<p>After doing that, copy the contents from the <code>build</code> folder we generated into this repository (it’ll just appear as a folder called <code>username.github.io</code> somewhere on your computer). We’re almost done now, finish off by comitting the&nbsp;changes:</p>
+<pre><code class="lang-bash">$ git add --all
+$ git commit -m <span class="string">"First commit"</span>
+$ git push
+</code></pre>
+<p>And that’s it! Your site will now be live at username.github.io. If you’re wondering what those git commands do, I’ll break it down. The command <code>add -all</code> adds each changed file to be staged. The command <code>commit -m</code> means that you’re comitting the staged changes to the master branch, with the comment ‘First commit’. <code>push</code> simply syncs the changes from your local repository to your remote repository on&nbsp;GitHub.</p>
+<p>That’s it! I’ll be revisiting this tutorial soon to talk about theming/templating in Wintersmith, using custom domains with GitHub Pages, and creating a custom 404 page. If you want to see the source code for this tutorial, just click the link below and you’ll be taken to the source on&nbsp;GitHub.</p>
+</section><a href="https://github.com/bentranter/bentranter.github.io" target="_blank" class="repo">View Source Code</a>
         </article>
       </div>
     </div>
