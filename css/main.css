@@ -1,3 +1,29 @@
+/*
+ * Theme Colours (from Base16 Ocean Theme by Chris Kempson (http://chriskempson.com))
+ *
+ * Dark black: #232830;
+ * Black: #2b303b;
+ * Dark grey: #343d46;
+ * Grey: #4f5b66;
+ * Light-grey: #65737e;
+ * Lighter-grey: #a7adba;
+ * Lightest-grey: #c0c5ce;
+ * Off-white-dark: #dfe1e8;
+ * Off-white-light: #eff1f5;
+ * Red: #bf616a;
+ * Orange: #d08770;
+ * Yellow: #ebcb8b;
+ * Green: #a3be8c;
+ * Green-blue: #96b5b4;
+ * Blue: #8fa1b3;
+ * Purple: #b48ead;
+ * Brown: #ab7967;
+ *
+ * Fonts
+ *
+ * Montserrat, Source Code Pro
+*/
+
 /* Box Sizing The Paul Irish Way */
 
 html {
@@ -7,7 +33,7 @@ html {
   box-sizing: inherit;
 }
 
-/* Lazy lazy lazy reset */
+/* Lazy lazy lazy reset and margin default for typography */
 
 p, a, img, ul, ol, dl, table, blockquote, pre {
   margin: 0;
@@ -16,31 +42,31 @@ p, a, img, ul, ol, dl, table, blockquote, pre {
   margin-bottom: 16px;
 }
 
-/* Element Styles */
+/* Element Styles -- mostly for supporting markdown better */
 
 body {
   background-color: #fff;
   margin: 0;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  color: #37474F;
-  font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #434958;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   line-height: 1.6;
 }
 
-.content-wrap {
-  width: 40em;
-  margin: 0px 64px 0px;
-}
-
 a {
-  color: #03A9F4;
+  color: #dc8189;
+  font-weight: bold;
   text-decoration: none;
 }
 
 a:hover {
-  color: #039BE5;
+  color: #f6d49f;
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -51,8 +77,8 @@ p {
 pre {
   font-size: 0.9em;
   overflow: auto;
-  background: #fff;
-  border: 1px dashed #d2d2d2;
+  background: #23241f;
+  border: none;
   border-radius: 0.25em;
   margin-bottom: 1.8em;
   padding: 1em;
@@ -64,7 +90,7 @@ h3,
 h4,
 h5,
 h6 {
-  position: relative;
+  /* position: relative; */
   margin-top: 1em;
   margin-bottom: 16px;
   font-weight: bold;
@@ -92,6 +118,14 @@ h3 {
 
 h4 {
   font-size: 1.25em;
+  color: #405665;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: bold;
+  margin-top: 0;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  padding-top: 64px;
 }
 
 h5 {
@@ -167,16 +201,84 @@ nav {
   -webkit-display: -webkit-flex;
   display: flex;
   display: -webkit-flex;
-  border-bottom: 1px solid #d2d2d2;
-  box-shadow: 1px 1px 1px #eee;
+  background: #2b2f39;
+  color: #b8d9d9;
+  font-weight: bold;
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing: 2px;
+  box-shadow: 1px 3px 1px #ccc;
   margin-bottom: 4px;
 }
 
 nav a {
   margin: 22px 16px 12px;
-  color: #333;
+  color: #b8d9d9;
   font-size: 12px;
 }
+
+nav a:hover {
+  color: #ffe0a7;
+}
+
+/* 
+ * Layout Specific Styles -- if you want to change this, make sure you run any flexbox stuff
+ * through autoprefixer or else your styles won't render on iOS webkit browsers. If you've 
+ * never used flexbox before, see http://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/
+ * for a basic layout example.
+ */
+
+.flex-layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.flex-layout-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.flex-layout-content {
+  flex: 1;
+  position: relative;
+  margin-left: 64px;
+}
+
+.flex-layout-sidebar {
+ flex: 0 0 266px;
+ position: relative;
+ margin-left: 0px;
+ margin-right: 64px;
+ border-top: 1px dotted #C2D3DE;
+}
+
+/* Sidebar Styles */
+
+.content-header, .sidebar-header {
+  position: absolute;
+  top: 1px;
+  left: 0px;
+  background: #b8d9d9;
+  color: #fff;
+  padding: 6px 8px 4px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  font-variant: small-caps;
+}
+
+.sidebar-header {
+  top: 0;
+  left: 0px;
+}
+
+.sidebar-content {
+  margin-left: 32px;
+}
+
+/* Menu Layout Helpers */
 
 .desktop-menu, .mobile-menu {
   width: 100%;
@@ -201,14 +303,36 @@ nav a {
 
 .title {
   margin-top: 16px;
-  color: #333;
+  color: #fff;
   font-size: 18px;
   font-weight: bold;
-  letter-spacing: -0.02rem;
+  letter-spacing: 4px;
 }
 
 .title:hover {
-  color: #333;
+  color: #ffe0a7;
+}
+
+/* Header */
+
+.site-title, .site-subtitle {
+  text-align: center;
+  padding: 0 16px;
+
+}
+
+.site-title {
+  font-family: 'Source Code Pro', monospace;
+  border-bottom: none;
+  margin-bottom: 12px;
+  color: #405665;
+  font-weight: normal;
+}
+
+.site-subtitle {
+  margin: 0 0 48px 0;
+  color: #9FB0BC;
+  font-weight: 300;
 }
 
 /* Article Styles */
@@ -223,13 +347,15 @@ header {
 }
 
 article {
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  padding: 25px 0 16px;
+  border-top: 1px dotted #C2D3DE;
+  border-right: 1px dotted #C2D3DE;
+  padding: 64px 32px 48px 0px;
 }
 
 .article-title {
   font-size: 1.25em;
-  color: #333;
+  color: #434958;
+  font-family: 'Source Code Pro', monospace;
   font-weight: bold;
   margin-top: 0;
   line-height: 1.4;
@@ -290,9 +416,9 @@ footer .copy, footer .copy a {
 /* code styling */
 
 code {
-  font-family: 'Anonymous Pro', monospace;
+  font-family: 'Source Code Pro', monospace;
   font-size: 0.85em;
-  color: #000;
+  color: #f8f8f2;
 }
 
 pre code {
@@ -304,7 +430,7 @@ p code {
   padding: 0.1em 0.3em 0.2em;
   border-radius: 0.3em;
   position: relative;
-  background: #fffff3;
+  background: #23241f;
   white-space: nowrap;
 }
 
@@ -374,16 +500,43 @@ code.lang-markdown .bullet {
 
 /* Media queries */
 
-@media (max-width: 690px) {
+@media (max-width: 768px) {
+
+  .flex-layout-content, .flex-layout-sidebar {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .content-header, .sidebar-header {
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    background: #b8d9d9;
+    color: #fff;
+    padding: 6px 8px 4px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    font-variant: small-caps;
+  }
+
+  article {
+    border-right: none;
+  }
+
+  .sidebar-header {
+    top: 0;
+    left: 0px;
+  }
+
+  .sidebar-content {
+    margin-left: 0px;
+    margin-bottom: 64px;
+  }
 
   .desktop-menu {
     display: none;
-  }
-
-  .content-wrap {
-    width: auto;
-    margin: 0;
-    padding: 0 1em;
   }
 
   footer .nav {
@@ -403,7 +556,16 @@ code.lang-markdown .bullet {
   }
 }
 
-@media (min-width: 691px) {
+@media (min-width: 769px) {
+
+  .flex-layout-body {
+    flex-direction: row;
+    flex: 1;
+  }
+  .flex-layout-content {
+    flex: 1;
+  }
+
   .mobile-menu {
     display: none;
   }
