@@ -62,6 +62,7 @@ a {
   color: #dc8189;
   font-weight: bold;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
 a:hover {
