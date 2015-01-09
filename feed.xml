@@ -14,24 +14,26 @@
       <pubDate>Sun, 04 Jan 2015 10:00:00 -0500</pubDate>
       <guid isPermaLink="true">http://yearlonghackathon.com/articles/week-1/</guid>
       <description>&lt;p&gt;I figured I’d keep it simple this week, so let’s get a static site up and running on GitHub Pages, with Node.js and Wintersmith&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;. Anytime I use a new or different technology, I’ll do my best to explain how to install it. Let’s get started by installing Node.&lt;/p&gt;
-&lt;h5 id=&quot;installing-node&quot;&gt;Installing Node&lt;/h5&gt;
+&lt;h4 id=&quot;installing-node&quot;&gt;Installing Node&lt;/h4&gt;
 &lt;p&gt;Head on over to &lt;a href=&quot;http://http://nodejs.org/&quot;&gt;nodejs.org&lt;/a&gt; and click the ‘Install’ button. From there, just run the installer once you’ve downloaded it, and you should be good to go. To test it out, open your console. On a Mac, its just called Terminal and can be found in your applications, or by searching with spotlight, and on Windows, its called Console and can be found from the start menu, or by searching for it (I haven’t used Windows in a while, please correct me if I’m wrong).&lt;/p&gt;
 &lt;p&gt;You can test to see if Node installed correctly by running:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ node
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h6 id=&quot;note-you-don-t-actually-type-the-symbol-its-just-used-to-inform-you-that-you-should-be-running-a-command-instead-of-typing-code-&quot;&gt;Note: you don’t actually type the ‘$’ symbol, its just used to inform you that you should be running a command instead of typing code.&lt;/h6&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: you don’t actually type the ‘$’ symbol, its just used to inform you that you should be running a command instead of typing code.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;If it works, the Node REPL will start. You can hit Control-C on any system to exit the Node REPL. Congrats! You’ve installed Node.js.&lt;/p&gt;
-&lt;h5 id=&quot;npm&quot;&gt;NPM&lt;/h5&gt;
+&lt;h4 id=&quot;npm&quot;&gt;NPM&lt;/h4&gt;
 &lt;p&gt;NPM stands for ‘Nice People Matter’, or ‘Node Package Manager’ (whichever you prefer). Its a package manager for JavaScript. NPM should install automatically when you install Node, but let’s make sure its there. Just run:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ npm
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;As long as you don’t get a ‘command not found’ type of error, everything is good. Now, we’ll install Wintersmith using NPM.&lt;/p&gt;
-&lt;h5 id=&quot;install-wintersmith&quot;&gt;Install Wintersmith&lt;/h5&gt;
+&lt;h4 id=&quot;install-wintersmith&quot;&gt;Install Wintersmith&lt;/h4&gt;
 &lt;p&gt;This is as easy as running one command:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ npm install wintersmith -g
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Where &lt;code&gt;install&lt;/code&gt; means download a package to your computer, &lt;code&gt;-g&lt;/code&gt; is a flag that instructs the package to be downloaded globally, so you can use that package anywhere (as opposed to only within a certain project directory), and finally &lt;code&gt;wintersmith&lt;/code&gt; is the name of the package we want to install.&lt;/p&gt;
 &lt;p&gt;Note that installing wintersmith may take an unusually long time to install (like more than five minutes), but that’s okay, nothing’s going wrong so just be patient :)&lt;/p&gt;
-&lt;h5 id=&quot;generate-a-new-site&quot;&gt;Generate A New Site&lt;/h5&gt;
+&lt;h4 id=&quot;generate-a-new-site&quot;&gt;Generate A New Site&lt;/h4&gt;
 &lt;p&gt;This is as simple as running:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ wintersmith new project-name
 &lt;/code&gt;&lt;/pre&gt;
@@ -40,7 +42,7 @@
 $ wintersmith preview
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;and open up &lt;code&gt;localhost:8080&lt;/code&gt; in a web browser. You’ll see a website built with the default theme.&lt;/p&gt;
-&lt;h5 id=&quot;writing-a-new-post&quot;&gt;Writing A New Post&lt;/h5&gt;
+&lt;h4 id=&quot;writing-a-new-post&quot;&gt;Writing A New Post&lt;/h4&gt;
 &lt;p&gt;Writing a new post is as simple as creating a new folder in the &lt;code&gt;articles&lt;/code&gt; directory, and creating a new markdown document within the new directory. To do this, we’ll stop the server (type Control-C), and then run a few simple commands:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; contents/articles
 $ mkdir new-post
@@ -48,13 +50,15 @@ $ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; new-post
 $ touch new-post.md
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;What we’ve done here is change into the directory named &lt;code&gt;articles&lt;/code&gt;, created a new folder using the &lt;code&gt;$ mkdir&lt;/code&gt; command, navigated to that folder, and created a new markdown document using the &lt;code&gt;$ touch&lt;/code&gt; command. From here, you should go to a sample post to copy/paste the metadata (the stuff at the top of the document in between the &lt;code&gt;---&lt;/code&gt;‘s) and replace it with your own info. At this point, you can write your post! Check out this &lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&quot;&gt;mardown cheatsheet&lt;/a&gt; for a handy reference on how to write in markdown if you’re new to it. Start your server again once you’ve written a post to preview it.&lt;/p&gt;
-&lt;h5 id=&quot;building-your-static-site-for-deployment&quot;&gt;Building Your Static Site For Deployment&lt;/h5&gt;
+&lt;h4 id=&quot;building-your-static-site-for-deployment&quot;&gt;Building Your Static Site For Deployment&lt;/h4&gt;
 &lt;p&gt;Wintersmith makes this really easy. Just run:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;wintersmith build
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This will generate a site made up of static HTML and CSS pages. The site will appear in a new folder called &lt;code&gt;build&lt;/code&gt;, located at the top of your new sites directory. This new site is what GitHub requires to host our site.&lt;/p&gt;
-&lt;h5 id=&quot;deploying-to-github-pages&quot;&gt;Deploying to GitHub Pages&lt;/h5&gt;
-&lt;h6 id=&quot;note-you-ll-need-git-installed-for-this-section-to-be-possible-that-is-outside-the-scope-of-this-tutorial-but-a-simple-google-search-should-get-you-sorted-out-&quot;&gt;Note: You’ll need git installed for this section to be possible. That is outside the scope of this tutorial, but a simple Google search should get you sorted out :)&lt;/h6&gt;
+&lt;h4 id=&quot;deploying-to-github-pages&quot;&gt;Deploying to GitHub Pages&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: You’ll need git installed for this section to be possible. That is outside the scope of this tutorial, but a simple Google search should get you sorted out :)&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;First, make sure you’ve actually signed up for a GitHub account. Just got to &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt; to do that, it’s really easy. From there, find the ‘+’ at the top beside your name, and click ‘New Repository’.&lt;/p&gt;
 &lt;p&gt;Name the new repo &lt;code&gt;username.github.io&lt;/code&gt;. It must match your username exactly, or this won’t work. Once that’s done, you’ll need to clone the repository locally:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ git clone https://github.com/username/username.github.io
@@ -76,23 +80,9 @@ $ git push
       <description>&lt;p&gt;As long as I’ve been programming (which is around three years as of writing), I’ve always been making things. Most things have been pretty lame and broken, but the creative process is the main reason I like programming&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;. Its like playing with lego, except you can’t step on a program and cut your foot open (at least not literally).&lt;/p&gt;
 &lt;p&gt;One thing I’ve always struggled with is shipping. Out of all the things I’ve made, I’ve never had the confidence to actually release them out into the world. The point of this project is for me to force myself to become better at shipping, as well as to give me platform to share all the dumb stuff I’ve made with the world.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Every Sunday of this year, I’ll be releasing a project (either new, or a significant iteration) along with some words about how it was created.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I was always fascinated by hackathons. Its pretty crazy what people are capable of creating in a short period of time. Its also pretty crazy how long it can take for devs to release or update software. I’ve been on both sides: I’ve participated in hackathons, and created something non-trivial in less than a full weekend’s time, and I’ve failed to complete a todo app over the course of a month. I’ve basically decided that the only way to become truly efficient at crreating and shipping code, is to practice that exact thing.&lt;/p&gt;
+&lt;p&gt;I was always fascinated by hackathons. Its pretty crazy what people are capable of creating in a short period of time. Its also pretty crazy how long it can take for devs to release or update software. I’ve been on both sides: I’ve participated in hackathons, and created something non-trivial in less than a full weekend’s time, and I’ve failed to complete a todo app over the course of a month. I’ve basically decided that the only way to become truly efficient at creating and shipping code, is to practice that exact thing.&lt;/p&gt;
 &lt;p&gt;The code, website, and everything that makes up this project will be publicly available on &lt;a href=&quot;https://github.com/bentranter&quot;&gt;GitHub&lt;/a&gt;. Besides this project, I’m also a third year student at Lakehead University in Computer Science, and a part time front-end developer at &lt;a href=&quot;http://boltmedia.ca/&quot;&gt;Bolt Media&lt;/a&gt;. If you’re interested in keeping up with me elsewhere, I’m on &lt;a href=&quot;https://twitter.com/0xBen&quot;&gt;Twitter&lt;/a&gt;, and do all my non-techinical writing on &lt;a href=&quot;https://medium.com/@0xben&quot;&gt;Medium&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I guess I should end by making a note of my intentions to do at least a few projects that don’t involve JavaScript, if only for my own accountability :) I’m sorry to everyone who dislikes the language, and I’ll admit it has an impressive amount of flaws. However, once you step into the community, you’ll never want to leave. Its the best!&lt;/p&gt;
-&lt;h4 id=&quot;syntax-highlighting-test&quot;&gt;Syntax Highlighting Test&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; test = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Test();
-&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; A = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;];
-
-&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, i++) {
-    A[i] = document.getElementById(&lt;span class=&quot;string&quot;&gt;'main-content'&lt;/span&gt;);
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;
-}
-
-&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (a &amp;lt; b)
-    console.log(&lt;span class=&quot;string&quot;&gt;&quot;Smaller&quot;&lt;/span&gt;);
-&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;
-    console.log(A[i] + &lt;span class=&quot;string&quot;&gt;'test'&lt;/span&gt;);
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
   </channel>
