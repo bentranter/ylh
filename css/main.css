@@ -1,1 +1,591 @@
-html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}a,blockquote,dl,img,ol,p,pre,table,ul{margin:0 0 16px;padding:0;border:0}body{background-color:#fff;margin:0;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#434958;font-family:Montserrat,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}a{color:#96b5b4;font-weight:700;text-decoration:none;word-wrap:break-word}a:hover{color:#ebcb8b;font-weight:700;text-decoration:none}p{margin-bottom:24px}pre{font-size:16px;overflow:auto;background:#2b303b;border:none;border-radius:.25em;margin-bottom:1.8em;padding:1em}h1,h2,h3,h4,h5,h6{position:relative;margin-top:1em;margin-bottom:16px;line-height:1.4;font-weight:400}h1{font-family:'Source Code Pro',monospace;padding-bottom:.3em;font-size:2.25em;line-height:1.2;border-bottom:1px dotted #C2D3DE}h2{font-family:'Source Code Pro',monospace;padding-bottom:.3em;font-size:1.75em;line-height:1.225;border-bottom:1px dotted #C2D3DE}h3{font-family:'Source Code Pro',monospace;font-size:1.5em;line-height:1.43;border-bottom:1px dotted #C2D3DE}h4{font-size:1.25em;line-height:1.4;font-weight:700}h5{font-size:1em;font-weight:700;color:#bf616a}h6{font-size:1em;font-weight:700;color:#a7adba}header{margin-bottom:16px}ol,ul{padding:0 0 0 2em;margin-top:0;margin-bottom:0}ol ol,ul ol{list-style-type:lower-roman}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-alpha}li{margin-bottom:.5em}blockquote{padding:0 16px;color:#a7adba;border-left:4px solid #dfe1e8;font-style:italic}blockquote>:first-child{margin-top:0}blockquote>:last-child{margin-bottom:0}hr{height:4px;padding:0;margin:16px 0;background-color:#ECEFF1;border:0}hr:before{display:table;content:""}hr:after{display:table;clear:both;content:""}nav{-webkit-display:-webkit-flex;display:-ms-flexbox;display:flex;display:-webkit-flex;background:#2b303b;color:#b8d9d9;font-weight:400;font-family:'Source Code Pro',monospace;letter-spacing:2px;box-shadow:1px 3px 1px #ccc;margin-bottom:4px}nav a{margin:22px 16px 14px;color:#96b5b4;font-weight:400;font-size:12px}nav a:hover{font-weight:400}.flex-layout{display:-webkit-flex;display:-ms-flexbox;display:flex;min-height:100vh;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.flex-layout-body{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex:1;-ms-flex:1;flex:1;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.flex-layout-content{-webkit-flex:1;-ms-flex:1;flex:1;position:relative}.flex-layout-sidebar{-webkit-flex:0 0 266px;-ms-flex:0 0 266px;flex:0 0 266px;position:relative;margin-left:0;margin-right:64px;border-top:1px dotted #C2D3DE}.content-header,.sidebar-header{position:absolute;top:1px;left:64px;background:#96b5b4;color:#fff;padding:6px 8px 4px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:lowercase;font-variant:small-caps}.sidebar-header{top:0;left:0}.sidebar-content{margin-top:64px;margin-left:32px}.desktop-menu,.mobile-menu{width:100%}.left,.right{-webkit-display:-webkit-flex;-webkit-display:-webkit-flex;display:-ms-flexbox;display:flex;display:-webkit-flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row}.left{float:left}.right{float:right}.title{margin-top:16px;color:#fff;font-size:18px;font-weight:400;letter-spacing:4px}.title:hover{font-weight:400}.site-subtitle,.site-title{text-align:center;padding:0 16px}.site-title{font-family:'Source Code Pro',monospace;border-bottom:none;margin-bottom:12px;color:#434958;font-weight:400}.site-subtitle{font-size:1.5em;line-height:1.43;text-align:center;margin:0 0 48px;color:#a7adba;font-weight:300}h6.subtitle{color:rgba(0,0,0,.3);font-weight:400}.article{border-top:1px dotted #C2D3DE;border-right:1px dotted #C2D3DE;padding:64px 32px 48px 0;margin:0 0 0 64px}.article-title,.sidebar-item-title{font-size:1.25em;color:#434958;font-weight:700;margin-top:0;line-height:1.4;margin-bottom:16px}a.article-title:hover{color:#96b5b4}.article-content-article-view{margin-left:auto;margin-right:auto;max-width:52em}.article-title-article-view{text-align:center;font-size:2.25em;line-height:1.2;padding:0 16px;font-family:'Source Code Pro',monospace;border-bottom:none;margin-top:36px;margin-bottom:12px;color:#434958;font-weight:400}.article-subtitle-article-view{font-size:1.5em;line-height:1.43;text-align:center;margin:0 0 48px;color:#a7adba;font-weight:300;padding-bottom:16px;border-bottom:1px dotted #C2D3DE}.date{font-size:14px;color:#65737e}.time-published{color:#65737e}.repo{display:block;text-align:center;color:#a7adba;margin:48px 0 64px}code{font-family:'Source Code Pro',monospace;font-size:.85em;color:#eff1f5}pre code{display:block;line-height:1.1}p code{padding:.1em .3em .2em;border-radius:.3em;position:relative;background:#2b303b;white-space:nowrap}code.lang-markdown{color:#eff1f5}code.lang-markdown .header,code.lang-markdown .strong{font-weight:700}code.lang-markdown .emphasis{font-style:italic}code.lang-markdown .code,code.lang-markdown .header,code.lang-markdown .horizontal_rule,code.lang-markdown .link_label,code.lang-markdown .link_url{color:#dfe1e8}.tomorrow-comment,code.lang-markdown .blockquote,code.lang-markdown .bullet,pre .comment,pre .title{color:#65737e}.tomorrow-red,pre .attribute,pre .css .class,pre .css .id,pre .css .pseudo,pre .html .doctype,pre .regexp,pre .ruby .constant,pre .tag,pre .variable,pre .xml .doctype,pre .xml .pi,pre .xml .tag .title{color:#bf616a}.tomorrow-orange,pre .built_in,pre .constant,pre .literal,pre .number,pre .params,pre .preprocessor{color:#d08770}.tomorrow-yellow,pre .class,pre .css .rules .attribute,pre .ruby .class .title{color:#ebcb8b}.tomorrow-green,pre .header,pre .inheritance,pre .ruby .symbol,pre .string,pre .value,pre .xml .cdata{color:#a3be8c}.tomorrow-aqua,pre .css .hexcolor{color:#96b5b4}.tomorrow-blue,pre .coffeescript .title,pre .function,pre .javascript .title,pre .perl .sub,pre .python .decorator,pre .python .title,pre .ruby .function .title,pre .ruby .title .keyword{color:#8fa1b3}.tomorrow-purple,pre .javascript .function,pre .keyword{color:#b48ead}@media (max-width:768px){.flex-layout-content,.flex-layout-sidebar{margin-left:16px;margin-right:16px}.content-header,.sidebar-header{position:absolute;top:1px;left:0;background:#b8d9d9;color:#fff;padding:6px 8px 4px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:lowercase;font-variant:small-caps}.article{border-right:none;margin-left:0;padding-right:0}.sidebar-header{top:0;left:0}.sidebar-content{margin-left:0;margin-bottom:64px}.desktop-menu{display:none}}@media (min-width:769px){.flex-layout-body{-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-flex:1;-ms-flex:1;flex:1}.flex-layout-content{-webkit-flex:1;-ms-flex:1;flex:1}.mobile-menu{display:none}}
+/*
+ * Theme Colours (from Base16 Ocean Theme by Chris Kempson (http://chriskempson.com))
+ *
+ * Dark black: #232830;
+ * Black: #2b303b;
+ * Dark grey: #343d46;
+ * Grey: #4f5b66;
+ * Light-grey: #65737e;
+ * Lighter-grey: #a7adba;
+ * Lightest-grey: #c0c5ce;
+ * Off-white-dark: #dfe1e8;
+ * Off-white-light: #eff1f5;
+ * Red: #bf616a;
+ * Orange: #d08770;
+ * Yellow: #ebcb8b;
+ * Green: #a3be8c;
+ * Green-blue: #96b5b4;
+ * Blue: #8fa1b3;
+ * Purple: #b48ead;
+ * Brown: #ab7967;
+ *
+ * Fonts
+ *
+ * Montserrat, Source Code Pro
+*/
+
+/* Box Sizing The Paul Irish Way */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Lazy lazy lazy reset and margin default for typography */
+
+p, a, img, ul, ol, dl, table, blockquote, pre {
+  margin: 0;
+  padding: 0; 
+  border: 0;
+  margin-bottom: 16px;
+}
+
+/* Element Styles -- mostly for supporting markdown better */
+
+body {
+  background-color: #fff;
+  margin: 0;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #434958;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a {
+  color: #96b5b4;
+  font-weight: bold;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+
+a:hover {
+  color: #ebcb8b;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 24px;
+}
+
+pre {
+  font-size: 16px;
+  overflow: auto;
+  background: #2b303b;
+  border: none;
+  border-radius: 0.25em;
+  margin-bottom: 1.8em;
+  padding: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative; 
+  margin-top: 1em;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  font-weight: normal;
+}
+
+h1 {
+  font-family: 'Source Code Pro', monospace;
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px dotted #C2D3DE;
+}
+
+h2 {
+  font-family: 'Source Code Pro', monospace;
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px dotted #C2D3DE;
+}
+
+h3 {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1.5em;
+  line-height: 1.43;
+  border-bottom: 1px dotted #C2D3DE;
+}
+
+h4 {
+  font-size: 1.25em;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  color: #bf616a;
+}
+
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+  color: #a7adba;
+}
+
+header {
+  margin-bottom: 16px;
+}
+
+ol, ul {
+  padding: 0;
+  padding-left: 2em;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-roman;
+}
+
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+blockquote {
+  padding: 0 16px;
+  color: #a7adba;
+  border-left: 4px solid #dfe1e8;
+  font-style: italic;
+}
+
+blockquote>:first-child {
+  margin-top: 0;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #ECEFF1;
+  border: 0 none;
+}
+
+hr:before {
+  display: table;
+  content: "";
+}
+
+hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+/* Menu */
+
+nav {
+  -webkit-display: -webkit-flex;
+  -webkit-display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex;
+  background: #2b303b;
+  color: #b8d9d9;
+  font-weight: normal;
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing: 2px;
+  box-shadow: 1px 3px 1px #ccc;
+  margin-bottom: 4px;
+}
+
+nav a {
+  margin: 22px 16px 14px;
+  color: #96b5b4;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+nav a:hover {
+  font-weight: normal;
+}
+
+/* 
+ * Layout Specific Styles -- if you want to change this, make sure you run any flexbox stuff
+ * through autoprefixer or else your styles won't render on iOS webkit browsers. If you've 
+ * never used flexbox before, see http://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/
+ * for a basic layout example.
+ */
+
+.flex-layout {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flex-layout-body {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flex-layout-content {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+}
+
+.flex-layout-sidebar {
+ -webkit-flex: 0 0 266px;
+     -ms-flex: 0 0 266px;
+         flex: 0 0 266px;
+ position: relative;
+ margin-left: 0px;
+ margin-right: 64px;
+ border-top: 1px dotted #C2D3DE;
+}
+
+/* Sidebar Styles */
+
+.content-header, .sidebar-header {
+  position: absolute;
+  top: 1px;
+  left: 64px;
+  background: #96b5b4;
+  color: #fff;
+  padding: 6px 8px 4px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  font-variant: small-caps;
+}
+
+.sidebar-header {
+  top: 0;
+  left: 0px;
+}
+
+.sidebar-content {
+  margin-top: 64px;
+  margin-left: 32px;
+}
+
+/* Menu Layout Helpers */
+
+.desktop-menu, .mobile-menu {
+  width: 100%;
+}
+
+.left, .right {
+  -webkit-display: -webkit-flex;
+  -webkit-display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+ 
+.menu-site-title {
+  margin-top: 16px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+.menu-site-title:hover {
+  font-weight: normal;
+}
+
+/* Header */
+
+.site-title, .site-subtitle {
+  text-align: center;
+  padding: 0 16px;
+
+}
+
+.site-title {
+  font-family: 'Source Code Pro', monospace;
+  border-bottom: none;
+  margin-bottom: 12px;
+  color: #434958;
+  font-weight: normal;
+}
+
+.site-subtitle {
+  font-size: 1.5em;
+  line-height: 1.43;
+  text-align: center;
+  margin: 0 0 48px 0;
+  color: #a7adba;
+  font-weight: 300;
+}
+
+/* Article Styles */
+
+h6.subtitle {
+  color: rgba(0,0,0,0.3);
+  font-weight: normal;
+}
+
+.article {
+  border-top: 1px dotted #C2D3DE;
+  border-right: 1px dotted #C2D3DE;
+  padding: 64px 32px 48px 0;
+  margin: 0 0 0 64px;
+}
+
+.article-title, .sidebar-item-title {
+  font-size: 1.25em;
+  color: #434958;
+  font-weight: bold;
+  margin-top: 0;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+a.article-title:hover {
+  color: #96b5b4;
+}
+
+/* Different Styles for Article Views */
+
+.article-content-article-view {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 52em;
+}
+
+.article-title-article-view {
+  text-align: center;
+  font-size: 2.25em;
+  line-height: 1.2;
+  padding: 0 16px;
+  font-family: 'Source Code Pro', monospace;
+  border-bottom: none;
+  margin-top: 36px;
+  margin-bottom: 12px;
+  color: #434958;
+  font-weight: normal;
+}
+
+.article-subtitle-article-view {
+  font-size: 1.5em;
+  line-height: 1.43;
+  text-align: center;
+  margin: 0 0 48px 0;
+  color: #a7adba;
+  font-weight: 300;
+  padding-bottom: 16px;
+  border-bottom: 1px dotted #C2D3DE;
+}
+
+.date {
+  font-size: 14px;
+  color: #65737e;
+}
+
+.time-published {
+  color: #65737e;
+}
+
+.repo {
+  display: block;
+  text-align: center;
+  color: #a7adba;
+  margin: 48px 0 64px;
+}
+
+/* Footer (to do) */
+
+/* Code styling */
+
+code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.85em;
+  color: #eff1f5;
+}
+
+pre code {
+  display: block;
+  line-height: 1.1;
+}
+
+p code {
+  padding: 0.1em 0.3em 0.2em;
+  border-radius: 0.3em;
+  position: relative;
+  background: #2b303b;
+  white-space: nowrap;
+}
+
+/* Syntax highlight stuff */
+
+code.lang-markdown {
+  color: #eff1f5;
+}
+
+code.lang-markdown .header,
+code.lang-markdown .strong {
+  font-weight: bold;
+}
+
+code.lang-markdown .emphasis {
+  font-style: italic;
+}
+
+code.lang-markdown .horizontal_rule,
+code.lang-markdown .link_label,
+code.lang-markdown .code,
+code.lang-markdown .header,
+code.lang-markdown .link_url {
+  color: #dfe1e8;
+}
+
+code.lang-markdown .blockquote,
+code.lang-markdown .bullet {
+  color: #65737e;
+}
+
+/*
+ * I know it's prefixed .tomorrow, but this is the Ocean Dark theme by Chris Kempson. 
+ * For what it's worth, Chris Kempson also authored the tomorrow theme.
+ */
+
+.tomorrow-comment, pre .comment, pre .title {
+  color: #65737e;
+}
+
+.tomorrow-red, pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo {
+  color: #bf616a;
+}
+
+.tomorrow-orange, pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+  color: #d08770;
+}
+
+.tomorrow-yellow, pre .class, pre .ruby .class .title, pre .css .rules .attribute {
+  color: #ebcb8b;
+}
+
+.tomorrow-green, pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+  color: #a3be8c;
+}
+
+.tomorrow-aqua, pre .css .hexcolor {
+  color: #96b5b4;
+}
+
+.tomorrow-blue, pre .function, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
+  color: #8fa1b3;
+}
+
+.tomorrow-purple, pre .keyword, pre .javascript .function {
+  color: #b48ead;
+}
+
+/* Media queries */
+
+/* Little screen styles */
+@media (max-width: 768px) {
+
+  .flex-layout-content, .flex-layout-sidebar {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .content-header, .sidebar-header {
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    background: #b8d9d9;
+    color: #fff;
+    padding: 6px 8px 4px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    font-variant: small-caps;
+  }
+
+  .article {
+    border-right: none;
+    margin-left: 0;
+    padding-right: 0;
+  }
+
+  .sidebar-header {
+    top: 0;
+    left: 0px;
+  }
+
+  .sidebar-content {
+    margin-left: 0px;
+    margin-bottom: 64px;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+}
+
+/* Big screen tyles */
+
+@media (min-width: 769px) {
+
+  .flex-layout-body {
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .flex-layout-content {
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+}

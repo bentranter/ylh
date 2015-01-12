@@ -13,13 +13,14 @@
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body class="flex-layout">
-    <nav><span class="desktop-menu"><span class="left"><a href="http://yearlonghackathon.com" class="title">Year Long Hackathon</a><a href="http://yearlonghackathon.com">Home</a><a href="http://yearlonghackathon.com/articles/hello-world">About</a><a href="mailto:bwtrante@lakeheadu.ca">Contact</a></span><span class="right"><a href="https://github.com/bentranter">GitHub</a></span></span><span class="mobile-menu"><span class="left"><a href="http://yearlonghackathon.com" class="mega-octicon octicon-home"></a></span><span class="right"><a href="http://yearlonghackathon.com/articles/hello-world" class="mega-octicon octicon-info"></a><a href="mailto:bwtrante@lakeheadu.ca" class="mega-octicon octicon-mail"></a><a href="https://github.com/bentranter" class="mega-octicon octicon-mark-github"></a></span></span></nav>
+    <nav><span class="desktop-menu"><span class="left"><a href="http://yearlonghackathon.com" class="menu-site-title">Year Long Hackathon</a><a href="http://yearlonghackathon.com">Home</a><a href="http://yearlonghackathon.com/articles/hello-world">About</a><a href="mailto:bwtrante@lakeheadu.ca">Contact</a></span><span class="right"><a href="https://github.com/bentranter">GitHub</a></span></span><span class="mobile-menu"><span class="left"><a href="http://yearlonghackathon.com" class="mega-octicon octicon-home"></a></span><span class="right"><a href="http://yearlonghackathon.com/articles/hello-world" class="mega-octicon octicon-info"></a><a href="mailto:bwtrante@lakeheadu.ca" class="mega-octicon octicon-mail"></a><a href="https://github.com/bentranter" class="mega-octicon octicon-mark-github"></a></span></span></nav>
     <div class="flex-layout-body">
       <div class="flex-layout-content">
         <article class="article-content-article-view">
           <h4 class="article-title-article-view">Deploying a Static Site to GitHub Pages with Wintersmith</h4>
           <h6 class="article-subtitle-article-view">Or, how this site was built</h6>
-          <section class="content"><p>I figured I’d keep it simple this week, so let’s get a static site up and running on GitHub Pages, with Node.js and Wintersmith<span class="more"></span>. Anytime I use a new or different technology, I’ll do my best to explain how to install it. Let’s get started by installing&nbsp;Node.</p>
+          <section class="content"><p><strong>The Problem</strong>: You need a website fast, you don’t want to spend any money, and you need to be able to update it easily. Luckily, GitHub pages will host your static site for free, and Wintersmith is an easy-to-use and easy-to-learn static website generator. It’s even suitable for people with no knowledge of web programming.<span class="more"></span></p>
+<p><strong>*Note</strong>: Anytime I use a new or different technology, I’ll do my best to explain how to install it. Let’s get started by installing&nbsp;Node.</p>
 <h4 id="installing-node">Installing&nbsp;Node</h4>
 <p>Head on over to <a href="http://http://nodejs.org/">nodejs.org</a> and click the ‘Install’ button. From there, just run the installer once you’ve downloaded it, and you should be good to go. To test it out, open your console. On a Mac, its just called Terminal and can be found in your applications, or by searching with spotlight, and on Windows, its called Console and can be found from the start menu, or by searching for it (I haven’t used Windows in a while, please correct me if I’m&nbsp;wrong).</p>
 <p>You can test to see if Node installed correctly by&nbsp;running:</p>
@@ -75,7 +76,7 @@ $ git commit -m <span class="string">"First commit"</span>
 $ git push
 </code></pre>
 <p>And that’s it! Your site will now be live at username.github.io. If you’re wondering what those git commands do, I’ll break it down. The command <code>add -all</code> adds each changed file to be staged. The command <code>commit -m</code> means that you’re comitting the staged changes to the master branch, with the comment ‘First commit’. <code>push</code> simply syncs the changes from your local repository to your remote repository on&nbsp;GitHub.</p>
-<p>That’s it! I’ll be revisiting this tutorial soon to talk about theming/templating in Wintersmith, using custom domains with GitHub Pages, and creating a custom 404 page. If you want to see the source code for this tutorial, just click the link below and you’ll be taken to the source on&nbsp;GitHub.</p>
+<p>I’ll be revisiting this tutorial soon to talk about theming/templating in Wintersmith, using custom domains with GitHub Pages, and creating a custom 404 page. If you want to see the source code for this tutorial, just click the link below and you’ll be taken to the source on&nbsp;GitHub.</p>
 </section><a href="https://github.com/bentranter/bentranter.github.io" target="_blank" class="repo">View Source Code</a>
         </article>
       </div>

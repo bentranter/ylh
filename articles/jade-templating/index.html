@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Year Long Hackathon
+    </title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="alternate" href="http://yearlonghackathon.com/feed.xml" type="application/rss+xml" title="By Ben Tranter">
+    <link rel="http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Code+Pro:400,700">
+    <link rel="stylesheet" href="/css/octicons.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="flex-layout">
+    <nav><span class="desktop-menu"><span class="left"><a href="http://yearlonghackathon.com" class="menu-site-title">Year Long Hackathon</a><a href="http://yearlonghackathon.com">Home</a><a href="http://yearlonghackathon.com/articles/hello-world">About</a><a href="mailto:bwtrante@lakeheadu.ca">Contact</a></span><span class="right"><a href="https://github.com/bentranter">GitHub</a></span></span><span class="mobile-menu"><span class="left"><a href="http://yearlonghackathon.com" class="mega-octicon octicon-home"></a></span><span class="right"><a href="http://yearlonghackathon.com/articles/hello-world" class="mega-octicon octicon-info"></a><a href="mailto:bwtrante@lakeheadu.ca" class="mega-octicon octicon-mail"></a><a href="https://github.com/bentranter" class="mega-octicon octicon-mark-github"></a></span></span></nav>
+    <div class="flex-layout-body">
+      <div class="flex-layout-content">
+        <article class="article-content-article-view">
+          <h4 class="article-title-article-view">Templating in Jade, The Good Parts</h4>
+          <h6 class="article-subtitle-article-view">A quick guide to one of the more confusing HTML templating languages</h6>
+          <section class="content"><p><strong>The problem</strong>: You’re a front-end web designer or developer who knows <span class="caps">HTML</span> and CSS who wants to learn more, but you don’t know where to start. Learning a templating language first is a great way to get a feel for the more complciated front-end concepts, and Jade is as good a place to start as any.<span class="more"></span></p>
+<h4 id="jade-the-good-parts">Jade: The Good&nbsp;Parts</h4>
+<p><a href="http://jade-lang.com">Jade</a> claims to be the template engine for Nodejs. It’s currently maintained by <a href="http://www.forbeslindesay.co.uk">Forbes Lindesay</a> and was originally authored by <span class="caps">TJ</span> Holowaychuk (if you haven’t heard of him, just do a Google search and prepare to be amazed). Jade can generate HTML, so let’s look at some Jade input and check out the HTML&nbsp;output:</p>
+<blockquote>
+<p>Sorry about the lack of Jade syntax highlighting, I’m working on&nbsp;it</p>
+</blockquote>
+<h6 id="jade">Jade</h6>
+<pre><code class="lang-jade">body
+  h1.site-title Hello, World!
+  #content
+    p We&#39;re using Jade!
+  #sidebar
+    ul
+      li Isn&#39;t the markup so much cleaner?
+      li And more legible?
+      li And awesome?
+</code></pre>
+<h6 id="html"><span class="caps">HTML</span></h6>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">body</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"site-title"</span>&gt;</span>Hello, World!<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"content"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">p</span>&gt;</span>We're using Jade!<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"sidebar"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Isn't the markup so much cleaner?<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>And more legible?<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>And awesome?<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+</code></pre>
+<p>You can tell just by looking at it that Jade operates on indentation and spaces. When writing Jade, you’ll need to indent using 2 spaces (or a soft tab set to two spaces). If you forget to this, Jade will complain. At this point, you could <code>$ npm install -g jade</code>, but I think you’ll find its easier to learn how to use Jade while actually making something with it. <a href="http://wintersmith.io">Wintersmith</a>, the static site generator I used to make this site, uses Jade for its templates, so let’s make a theme for Wintersmith and learn Jade at the same&nbsp;time.</p>
+<h4 id="getting-started">Getting&nbsp;Started</h4>
+<p>In my last post, I covered how to set up a static site with Wintersmith and deploy it on GitHub Pages. If you don’t have Wintersmith installed on your machine, please <a href="http://yearlonghackathon.com/articles/week-1/">check that article out</a> quickly to get up to&nbsp;speed.</p>
+<p>Once of you’ve done that, we’re going to run <code>$ wintersmith new my-site-name</code>, where my-site-name should be replaced with the name of your site. From there, open the generated folder in your text editor of choice (I’m using <a href="http://http://www.sublimetext.com/3">Sublime Text 3</a> for this) and check out the file structure. You’ll see four&nbsp;folders:</p>
+<ol>
+<li><em>Contents</em> - This where your articles, your sites authors, your <span class="caps">CSS</span>, and any other markdown files will go, as well as your favicon and images (should you choose to include those things). It also includes a file named <code>feed.json</code> which generates your <span class="caps">RSS</span>&nbsp;feed.</li>
+<li><em>Node_Modules</em> - This is where your node modules will go! (Obviously). You don’t need to go in&nbsp;here.</li>
+<li><em>Plugins</em> - This is where Wintersmith specific plugins go. Right now, it should only contain the pagination&nbsp;plugin.</li>
+<li><em>Templates</em> - This is where the Jade happens. These are the templates that define the look and feel of your site. There should be six templates when you start any new&nbsp;site.</li>
+</ol>
+<p>There are also three more files. The config just allows to define site-wide variables, like the site <span class="caps">URL</span>, your name, etc. It also lets you tell Wintersmith which plugins you’re using, and lets you define settings for those plugins. The package file is for NPM, and just states the dependencies for your site. The README is up for you to fill in, should you want to create a README for your site at&nbsp;all.</p>
+<h4 id="deleting-a-bunch-of-stuff">Deleting a Bunch of&nbsp;Stuff</h4>
+<p>You’ll never truly learn anything by just spinning the pre-made templates, so go ahead and <strong>delete all of them</strong>. Seriously. Since we’ve deleted everything, our stylesheet probably isn’t very useful, so go ahead and <strong>delete all the content</strong> in <code>main.css</code>, but leave that file there. Let’s start from&nbsp;scratch.</p>
+<h6 id="note-css-and-front-end-javascript-aren-t-part-of-this-tutorial-so-we-re-just-going-to-use-foundation-5-to-make-life-easy-please-check-the-repo-for-this-article-if-you-re-unsure-on-how-to-add-the-stylesheets-and-accompanying-javascript-">Note: <span class="caps">CSS</span> and front-end JavaScript aren’t part of this tutorial, so we’re just going to use Foundation 5 to make life easy. Please check the repo for this article if you’re unsure on how to add the stylesheets and accompanying&nbsp;JavaScript.</h6>
+<h6 id="another-note-wintersmith-is-kind-of-annoying-in-that-some-files-need-specific-names-you-ll-see-this-as-you-read-on-">Another Note: Wintersmith is kind of annoying in that some files need specific names. You’ll see this as you read&nbsp;on.</h6>
+<h4 id="layout">Layout</h4>
+<p>Create new file called <code>layout.jade</code> in the templates folder. This is the file that defines the main structure of your site. Let’s add in the usual boilerplate code that every site&nbsp;needs:</p>
+<h4 id="layout-jade">layout.jade</h4>
+<pre><code class="lang-jade">doctype html
+html(lang=&#39;en&#39;)
+  head
+    block head
+      meta(charset=&#39;utf-8&#39;)
+      meta(http-equiv=&#39;X-UA-Compatible&#39;, content=&#39;IE=edge,chrome=1&#39;)
+      meta(name=&#39;viewport&#39;, content=&#39;width=device-width&#39;)
+      title= locals.name
+      link(rel=&#39;alternate&#39;, href=locals.url+&#39;/feed.xml&#39;, type=&#39;application/rss+xml&#39;, title=locals.description)
+      link(rel=&#39;stylesheet&#39;, href=&#39;/css/main.css&#39;)
+</code></pre>
+<p>If you’ve written any <span class="caps">HTML</span> before, everything here should be pretty familiar. There should only be two things that stick out: the two <code>block</code>s and the <code>= locals.name</code>. This is the stuff Jade can do that <span class="caps">HTML</span> can’t do. When you define a <code>block</code>, you’re essentially defining a bunch of <span class="caps">HTML</span> that can be overridden by another template using <code>extend</code>. This lets you create default content, and then override it with content from a different template. We’ll see this in action very soon. The <code>= locals.name</code> allows you to evaluate some expression and assign it to an attribute. It’s very important to include the space after <code>=</code>, otherwise Jade won’t think its an expression and won’t evaluate anything. The variable <code>locals.name</code> just refers to our local values defined it <code>config.json</code>.</p>
+<p>Here’s the rest of <code>layout.jade</code>:</p>
+<h4 id="layout-jade">layout.jade</h4>
+<pre><code class="lang-jade">  body
+    block nav
+      p Navigation goes here
+
+    header.site-header.row
+      block header
+          h2= locals.name
+
+    main.container
+      block content
+          h2 Welcome! This is the default content.
+
+    footer.site-footer
+      block footer
+        p &amp;copy; #{ new Date().getFullYear() + &#39; &#39; + locals.owner }
+
+    script(src=&quot;/js/jquery.js&quot;)
+    script(src=&quot;/js/main.js&quot;)
+</code></pre>
+<p>Note the indentation. Everything is indented by two spaces to keep in within the original <code>html</code> tag. We also see two more new things here. The first is <code>a(href=locals.url)</code>. You might be thinking, “Don’t we need a space after the <code>=</code> sign here?” The answer is nope, because Jade recognizes that there aren’t a pair of quotations around <code>locals.url</code> so it recognizes that it needs to evaluate that. The next new thing is the <code>#{ new Date... }</code> that we see in the last line. The <code>#{ ... }</code> just tells Jade to run some JavaScript within those brackets. You should be able to tell that this just generates the string ‘© 2015 Someone’ (where someone is the value of the <code>locals.owner</code>).</p>
+<h4 id="index">Index</h4>
+<p>Create a new file in the templates directory called <code>index.jade</code>. The very first line in this file should&nbsp;be:</p>
+<h4 id="index-jade">index.jade</h4>
+<pre><code class="lang-jade">extends layout
+</code></pre>
+<p>Now unfortunately, Wintersmith doesn’t have Jade implemented perfectly, so we can only create files named layout, index, and article, and have <code>extends</code> work (if someone knows how to get around this, please tell me because this drove me insane when making my site). Luckily, we can keep our code organized by using <code>includes</code>.</p>
+<p>Before ceating any new files, let’s write our <code>index.html</code> template:</p>
+<h4 id="index-jade">index.jade</h4>
+<pre><code class="lang-jade">extends layout
+
+block nav
+  include partials/nav
+
+block header
+  block title
+    include partials/title
+  block signup
+    include partials/signup
+
+block content
+  h2.news-and-events News &amp;amp; Upcoming Events
+
+  each article in articles
+    article
+      header
+        p.date
+          span= moment.utc(article.date).format(&#39;MMMM Do YYYY&#39;)
+        h2
+          a(href=article.url)= article.title
+      section.content
+        if article.intro.length &gt; 0
+          | !{ typogr(article.intro).typogrify() }
+        if article.hasMore
+          p.more
+            a(href=article.url) Read More
+
+block prepend footer
+  if prevPage
+    a(href=prevPage.url) « Previous
+  if nextPage
+    a(href=nextPage.url) Next »
+</code></pre>
+<p>Now, make a new directory within <code>templates</code> named <code>partials</code>. Inside <code>partials</code>, create four files: <code>logo.jade</code>, <code>nav.jade</code>, <code>signup.jade</code>, and <code>title.jade</code>.</p>
+<p>Going back to <code>index.jade</code>, I know this might be a lot to take in, but its really not too bad. We’re defining four blocks, and linking some partials to them. Those partials are the new jade files we just created in our <code>partials</code>subfolder. In our content block, we cone across some new concepts. The <code>each</code> statement is your basic looping structure that the typical programming language would provide. In this case, “each” is saying, “For every <code>index.md</code> file in the folder <code>articles</code>, render the content that appears before our <code>&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;</code> tag”. The other unfamiliar things you see is are two plugins at work: moment and typogrify. Moment just formats the date in a more readable way, and typogrify ads a bit of syntactic sugar to our markup to improve our&nbsp;typography.</p>
+<p>You also might’ve noticed that we’re using an <code>if</code> block in there. Jade evaluates if statements the same as any other programming language. In this case, it’s testing against a variable provided by our typography plugin to determine whether or not it needs to run the plugin when generating the static site. You can probably guess what’s happening in the footer&nbsp;block.</p>
+<p>That’s about it for our index, let’s move on to the partials. We might as well start with the navigation, since it sits at the top of the&nbsp;page.</p>
+<h4 id="partials-nav-jade">partials/nav.jade</h4>
+<pre><code class="lang-jade">nav(class=&quot;top-bar&quot;,data-topbar,role=&quot;navigation&quot;)
+  ul.title-area
+    li.name
+      h1
+        a(href=locals.url) Site Name
+    li.toggle-topbar.menu-icon
+      a(href=&quot;#&quot;)
+        span Menu
+  section.top-bar-section
+    ul.right
+      li
+        a(href=&quot;#&quot;) Link 1
+      li
+        a(href=&quot;#&quot;) Link 2
+      li
+        a(href=&quot;#&quot;) Link 3
+      li
+        a(href=&quot;#&quot;) Link 4
+</code></pre>
+<p>This is just basic markup for a responsive menu using Foundation 5. No new concepts here. Let’s look at our title&nbsp;partial.</p>
+<h4 id="partials-title-jade">partials/title.jade</h4>
+<pre><code class="lang-jade">.small-12.medium-8.columns
+  h4.site-subtitle= locals.description
+  p.site-description= locals.about
+</code></pre>
+<p>Nothing new in here, except you can see that we’ve added a new variable in locals, called <code>locals.about</code>. Let’s go to <code>config.json</code> to make sure we’ve added that&nbsp;correctly.</p>
+<h4 id="config-json">config.json</h4>
+<pre><code class="lang-json">{
+  &quot;locals&quot;: {
+    &quot;url&quot;: &quot;http://localhost:8080&quot;,
+    &quot;name&quot;: &quot;Site Name&quot;,
+    &quot;owner&quot;: &quot;Your Name&quot;,
+    &quot;description&quot;: &quot;Welcome to my awesome site&quot;,
+    &quot;about&quot;: &quot;About my site&quot;
+  }, // more stuff comes after this but we don&#39;t need to worry about it
+</code></pre>
+<p>The only way you can realy mess is this up is by forgetting or adding a comma. If you get an error, check your commas! There shouldn’t be a comma after the “about” line. Let’s move on to our sign up&nbsp;partial.</p>
+<h4 id="partials-signup-jade">partials/signup.jade</h4>
+<pre><code class="lang-jade">.small-12.medium-4.columns
+  //- Your Mailchimp, Aweber, etc code goes in here
+</code></pre>
+<p>Here’s a fun exercise for you: take the <span class="caps">HTML</span> that one of these services generates, and try cnverting it to Jade. This will really help you get a feel for the language’s syntax. If you get stuck and you’re using Mailchimp, check the&nbsp;repo.</p>
+<p>So far, we’ve got the structure of our site down. Now, we’ll need to get the structure of individual articles down. Create a new file at the top of the <code>contents</code> folder (meaning <strong>not</strong> inside partials) and call it <code>article.jade</code>. Here’s the code for&nbsp;it.</p>
+<h4 id="article-jade">article.jade</h4>
+<pre><code class="lang-jade">
+extends layout
+
+block nav
+  include partials/nav
+
+block prepend title
+  | #{ page.title + &quot; - &quot;}
+
+block header
+  h1= page.title
+  p
+    | #{ &quot;Written by &quot; + page.metadata.author }
+
+block content
+  article.article
+    section.content!= typogr(page.html).typogrify()
+</code></pre>
+<p>You can see here, we’re extending the layout again, but overriding our blocks with different content. This will make the layout of our articles different than the layout for our index. You’ll notice we’ve done something new here again. We’e used the character <code>|</code> (pronounced ‘pipe’) before our JavaScript evaluation. Using this character simply allows the evaluated JavaScript to appear as plaintext. We also see <code>page.metadata.author</code>. Basically, anything beginning with <code>page.metadata</code> is just the way the values we put at the top of our markdown files are accessed in&nbsp;Wintersmith.</p>
+<p>We’ve come to the single most confusing thing in Jade (for me at least): the syntax for escaping text. You’ll see in the content block, there is this&nbsp;line:</p>
+<pre><code class="lang-jade">section.content!= typogr(page.html).typogrify()
+</code></pre>
+<p>Your first instinct is to probably ask yourself, “are we saying that the content of the section <em>isn’t</em> page.html?” Normally, you’d be right, but Jade does things stragely. The <code>!=</code> sign is simply telling Jade <strong>not</strong> to escape the <span class="caps">HTML</span> in the generated <code>page.html</code>. If we used an <code>=</code> instead, we’d get escaped <span class="caps">HTML</span> as output, so our aticles would render as one long string made up of the HTML that makes up our entire content block. See <a href="http://jade-lang.com/reference/attributes/#unescaped">this page</a> in the docs for mor&nbsp;info.</p>
+<p>We’re almost done now, we just need to create one more page: the page for displaying actual pages (as opposed to articles). This is another kind of annoying thing in Wintersmith, because you’ll need to create three files to do this: <code>page.jade</code> at the top of the <code>templates</code> folder, <code>page.json</code> at the top of the <code>contents</code> folder, and <code>page.md</code>, also at the top of the <code>contents</code> folder. Here’s what each file looks like,&nbsp;respectively:</p>
+<h4 id="article-jade">article.jade</h4>
+<pre><code class="lang-jade">extends layout
+
+block nav
+    include partials/nav
+
+block content
+    !=contents[&#39;page.md&#39;].html
+</code></pre>
+<h4 id="page-json">page.json</h4>
+<pre><code class="lang-json">{
+  "<span class="attribute">template</span>": <span class="value"><span class="string">"page.jade"</span>
+</span>}
+</code></pre>
+<h4 id="page-json">page.json</h4>
+<pre><code class="lang-markdown"><span class="horizontal_rule">---</span>
+<span class="header">view: none
+---</span>
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat.
+</code></pre>
+<p>And that’s it! Remember, you can precview your site by running <code>wintersmith preview</code>. Your new page will appear at <code>0.0.0.0:8080/page.html</code>. Check out the source to see the site that was built based on this&nbsp;article.</p>
+</section><a href="https://github.com/lucssa/lucssa.ca" target="_blank" class="repo">View Source Code</a>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
