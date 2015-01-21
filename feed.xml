@@ -5,9 +5,82 @@
     <atom:link href="http://yearlonghackathon.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://yearlonghackathon.com</link>
     <description>By Ben Tranter</description>
-    <pubDate>Sun, 11 Jan 2015 11:00:00 -0500</pubDate>
+    <pubDate>Mon, 19 Jan 2015 11:00:00 -0500</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Doing Magic with Meteor at Startup Weekend</title>
+      <link>http://yearlonghackathon.com/articles/startup-weekend/</link>
+      <pubDate>Mon, 19 Jan 2015 11:00:00 -0500</pubDate>
+      <guid isPermaLink="true">http://yearlonghackathon.com/articles/startup-weekend/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;The problem&lt;/strong&gt;: You enter startup weekend and need to build an app that can run everywhere. You’ve basically got a day to implement the functionality, and then another day to implement the design. If this sounds like something you have to do, you might as well use Meteor.&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&quot;meteor&quot;&gt;Meteor&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://meteor.com&quot;&gt;Meteor&lt;/a&gt; makes a lot of claims, but its basically another full-stack way to write realtime web and mobile apps in JavaScript. It has its own &lt;em&gt;everything&lt;/em&gt;: templating system, layout engine, database integration, package manager, and a lot of other stuff (except it doesn’t have its own router… what the heck?). It also has more magic than I’ve ever seen in any other framework. I don’t actually understand it well enough to write a tutorial about it, so I’ll just talk about my experience with it, and some of the crazy stuff I discovered it can do.&lt;/p&gt;
+&lt;h6 id=&quot;go-to-mydeas-co-https-mydeas-co-to-see-the-app-if-you-re-on-an-iphone-add-it-your-home-screen-since-it-s-web-app-capable-for-the-full-experience-&quot;&gt;Go to &lt;a href=&quot;https://mydeas.co&quot;&gt;mydeas.co&lt;/a&gt; to see the app (if you’re on an iPhone, add it your home screen since it’s web-app capable, for the full experience)&lt;/h6&gt;
+&lt;p&gt;The app was intended to be yet-another-note-taking app, but with a better way to tag your notes, and realtime sharing of notes with any other user. The app basically works by signing in, typing a note to add, selecting a tag from a list of tags, and hitting submit to add it to your notes. You can filter notes by tags, and edit notes once you’ve created them. The sharing feature is enabled by default in the app, so all your notes are visible and editable by other users. Note that this app wasn’t my idea, so if you think it’s a bit ridiculous, then that’s perfectly okay.&lt;/p&gt;
+&lt;h4 id=&quot;the-magic&quot;&gt;The Magic&lt;/h4&gt;
+&lt;p&gt;First some background: Meteor has &lt;em&gt;collections&lt;/em&gt;, which are used to model data. &lt;code&gt;Notes&lt;/code&gt; in the upcoming example just refers to a collection in our database with that name. Also, each template typically has an accompanying file with a bunch of JavaScript for event handling, and providing helper functions. Here’s &lt;code&gt;home.js&lt;/code&gt;. What you’re about to see is pure magic.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;Template.home.events({
+  &lt;span class=&quot;string&quot;&gt;&quot;change .note&quot;&lt;/span&gt;: &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(e)&lt;/span&gt; {&lt;/span&gt;
+
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; note = e.currentTarget.value;
+    Notes.update({_id: &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;._id}, {$set: {title: note}});
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is the code for changing an existing note. When you change the contents of an &lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt;, the change event fires. Then, we use &lt;code&gt;e.currentTarget.value&lt;/code&gt; to grab the text that was changed inside that input field. Then, we &lt;em&gt;get the database id of the note we want to change from that same &lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt;&lt;/em&gt;. How?? How would you ever get a database id from a string you pulled out of the DOM? That’s black magic.&lt;/p&gt;
+&lt;h4 id=&quot;sometimes-there-is-too-much-magic&quot;&gt;Sometimes There is Too Much Magic&lt;/h4&gt;
+&lt;p&gt;We wanted to be able to toggle a tag by clicking or tapping on it. You think you’d just be able to change the class on the click event, and when a user hits submit, iterate through the list of tags, get the array of selected tags by classname, and then put those tags in the database along with the rest of your note. Not in Meteor (at least not in any way that we could figure out). In Meteor, you have to use a &lt;em&gt;Session&lt;/em&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;Template.home.events({
+  &lt;span class=&quot;string&quot;&gt;&quot;click .unselected, touchstart .unselected&quot;&lt;/span&gt;: &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(e)&lt;/span&gt; {&lt;/span&gt;
+
+    e.currentTarget.className = &lt;span class=&quot;string&quot;&gt;'selected'&lt;/span&gt;;
+
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; tags = Session.get(&lt;span class=&quot;string&quot;&gt;'tags'&lt;/span&gt;);
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!tags) {
+      tags = []; 
+    }
+
+    tags.push(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.tag);
+    Session.set(&lt;span class=&quot;string&quot;&gt;'tags'&lt;/span&gt;, tags);
+  },
+  &lt;span class=&quot;string&quot;&gt;&quot;submit .new-note&quot;&lt;/span&gt;: &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(e)&lt;/span&gt; {&lt;/span&gt;
+
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!Session.get(&lt;span class=&quot;string&quot;&gt;'tags'&lt;/span&gt;)) {
+      alert(&lt;span class=&quot;string&quot;&gt;&quot;Need tag&quot;&lt;/span&gt;);
+      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;
+    } 
+
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; note = e.target.text.value;
+
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (note) {
+      Notes.insert({
+        title: note,
+        created: &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;(),
+        userId: Meteor.userId(),
+        author: Meteor.user().username,
+        tags: Session.get(&lt;span class=&quot;string&quot;&gt;'tags'&lt;/span&gt;)
+      });
+    }
+
+    e.target.text.value = &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;
+    &lt;span class=&quot;keyword&quot;&gt;delete&lt;/span&gt; Session.keys[&lt;span class=&quot;string&quot;&gt;'tags'&lt;/span&gt;];
+    selected = $(&lt;span class=&quot;string&quot;&gt;'.selected'&lt;/span&gt;);
+
+    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; selected.length; i++){
+      selected[i].className = &lt;span class=&quot;string&quot;&gt;'unselected'&lt;/span&gt;;
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here’s what’s happening: when you click the tag you want, we start by changing the class name. Then, if there aren’t any tags yet, we create an empty array, and push the tag into the array. Meteor provides us with a &lt;code&gt;Session&lt;/code&gt; object, and we add each new tag into that. The session is just a key-value thing so it’s straightforward enough.&lt;/p&gt;
+&lt;p&gt;When we submit a new note, quite a bit more stuff takes place. We check the session to see if any tags have been set, and throw an error if there aren’t. Then we insert the note along with the selected tags. That part is actually kind of nice because of how easy it is. However, that’s where we stopped our insertion logic for awhile, until some weird stuff started happening. Turns out, a fun way to leak memory and annoy your users in Meteor is forgetting to clear the session after submission. If you’re not used to web apps, or you had already been coding for ten hours like we were :P, you forget that the browser isn’t going to refresh after submission. You have to clear the session after submission, obviously, since the browser isn’t going to be doing a refresh anytime soon.&lt;/p&gt;
+&lt;p&gt;The last two bits of code just change the class of the selected tags to unselected, and then return false (it basically does the same thing as &lt;code&gt;event.preventDefault()&lt;/code&gt;). Compared to calling a &lt;code&gt;.toggle()&lt;/code&gt; in jQuery and using a for loop to blast through your list looking for &lt;code&gt;.selected&lt;/code&gt; tags, this was pretty unfamiliar and took a little while to figure out.&lt;/p&gt;
+&lt;p&gt;Well, that’s enough for this time. Be sure to check the project if you’re interested, and definitely check out Meteor if you’ve got a hackathon of any sort coming up. Next week will be a backend-only post about building APIs with Express and RethinkDB, so I’m pretty excited about that. See you next time.&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Templating in Jade, The Good Parts</title>
       <link>http://yearlonghackathon.com/articles/jade-templating/</link>

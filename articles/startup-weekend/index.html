@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Year Long Hackathon
+    </title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="alternate" href="http://yearlonghackathon.com/feed.xml" type="application/rss+xml" title="By Ben Tranter">
+    <link rel="http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Code+Pro:400,700">
+    <link rel="stylesheet" href="/css/octicons.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body class="flex-layout">
+    <nav><span class="desktop-menu"><span class="left"><a href="http://yearlonghackathon.com" class="menu-site-title">Year Long Hackathon</a><a href="http://yearlonghackathon.com">Home</a><a href="http://yearlonghackathon.com/articles/hello-world">About</a><a href="mailto:bwtrante@lakeheadu.ca">Contact</a></span><span class="right"><a href="https://github.com/bentranter">GitHub</a></span></span><span class="mobile-menu"><span class="left"><a href="http://yearlonghackathon.com" class="mega-octicon octicon-home"></a></span><span class="right"><a href="http://yearlonghackathon.com/articles/hello-world" class="mega-octicon octicon-info"></a><a href="mailto:bwtrante@lakeheadu.ca" class="mega-octicon octicon-mail"></a><a href="https://github.com/bentranter" class="mega-octicon octicon-mark-github"></a></span></span></nav>
+    <div class="flex-layout-body">
+      <div class="flex-layout-content">
+        <article class="article-content-article-view">
+          <h4 class="article-title-article-view">Doing Magic with Meteor at Startup Weekend</h4>
+          <h6 class="article-subtitle-article-view">My experience with the most magical full-stack JavaScript framework</h6>
+          <section class="content"><p><strong>The problem</strong>: You enter startup weekend and need to build an app that can run everywhere. You’ve basically got a day to implement the functionality, and then another day to implement the design. If this sounds like something you have to do, you might as well use Meteor.<span class="more"></span></p>
+<h4 id="meteor">Meteor</h4>
+<p><a href="http://meteor.com">Meteor</a> makes a lot of claims, but its basically another full-stack way to write realtime web and mobile apps in JavaScript. It has its own <em>everything</em>: templating system, layout engine, database integration, package manager, and a lot of other stuff (except it doesn’t have its own router… what the heck?). It also has more magic than I’ve ever seen in any other framework. I don’t actually understand it well enough to write a tutorial about it, so I’ll just talk about my experience with it, and some of the crazy stuff I discovered it can&nbsp;do.</p>
+<h6 id="go-to-mydeas-co-https-mydeas-co-to-see-the-app-if-you-re-on-an-iphone-add-it-your-home-screen-since-it-s-web-app-capable-for-the-full-experience-">Go to <a href="https://mydeas.co">mydeas.co</a> to see the app (if you’re on an iPhone, add it your home screen since it’s web-app capable, for the full&nbsp;experience)</h6>
+<p>The app was intended to be yet-another-note-taking app, but with a better way to tag your notes, and realtime sharing of notes with any other user. The app basically works by signing in, typing a note to add, selecting a tag from a list of tags, and hitting submit to add it to your notes. You can filter notes by tags, and edit notes once you’ve created them. The sharing feature is enabled by default in the app, so all your notes are visible and editable by other users. Note that this app wasn’t my idea, so if you think it’s a bit ridiculous, then that’s perfectly&nbsp;okay.</p>
+<h4 id="the-magic">The&nbsp;Magic</h4>
+<p>First some background: Meteor has <em>collections</em>, which are used to model data. <code>Notes</code> in the upcoming example just refers to a collection in our database with that name. Also, each template typically has an accompanying file with a bunch of JavaScript for event handling, and providing helper functions. Here’s <code>home.js</code>. What you’re about to see is pure&nbsp;magic.</p>
+<pre><code class="lang-javascript">Template.home.events({
+  <span class="string">"change .note"</span>: <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+
+    <span class="keyword">var</span> note = e.currentTarget.value;
+    Notes.update({_id: <span class="keyword">this</span>._id}, {$set: {title: note}});
+  }
+});
+</code></pre>
+<p>This is the code for changing an existing note. When you change the contents of an <code>&lt;input&gt;</code>, the change event fires. Then, we use <code>e.currentTarget.value</code> to grab the text that was changed inside that input field. Then, we <em>get the database id of the note we want to change from that same <code>&lt;input&gt;</code></em>. How?? How would you ever get a database id from a string you pulled out of the <span class="caps">DOM</span>? That’s black&nbsp;magic.</p>
+<h4 id="sometimes-there-is-too-much-magic">Sometimes There is Too Much&nbsp;Magic</h4>
+<p>We wanted to be able to toggle a tag by clicking or tapping on it. You think you’d just be able to change the class on the click event, and when a user hits submit, iterate through the list of tags, get the array of selected tags by classname, and then put those tags in the database along with the rest of your note. Not in Meteor (at least not in any way that we could figure out). In Meteor, you have to use a <em>Session</em>:</p>
+<pre><code class="lang-javascript">Template.home.events({
+  <span class="string">"click .unselected, touchstart .unselected"</span>: <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+
+    e.currentTarget.className = <span class="string">'selected'</span>;
+
+    <span class="keyword">var</span> tags = Session.get(<span class="string">'tags'</span>);
+    <span class="keyword">if</span> (!tags) {
+      tags = []; 
+    }
+
+    tags.push(<span class="keyword">this</span>.tag);
+    Session.set(<span class="string">'tags'</span>, tags);
+  },
+  <span class="string">"submit .new-note"</span>: <span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+
+    <span class="keyword">if</span> (!Session.get(<span class="string">'tags'</span>)) {
+      alert(<span class="string">"Need tag"</span>);
+      <span class="keyword">return</span> <span class="literal">false</span>;
+    } 
+
+    <span class="keyword">var</span> note = e.target.text.value;
+
+    <span class="keyword">if</span> (note) {
+      Notes.insert({
+        title: note,
+        created: <span class="keyword">new</span> <span class="built_in">Date</span>(),
+        userId: Meteor.userId(),
+        author: Meteor.user().username,
+        tags: Session.get(<span class="string">'tags'</span>)
+      });
+    }
+
+    e.target.text.value = <span class="string">""</span>;
+    <span class="keyword">delete</span> Session.keys[<span class="string">'tags'</span>];
+    selected = $(<span class="string">'.selected'</span>);
+
+    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; selected.length; i++){
+      selected[i].className = <span class="string">'unselected'</span>;
+    }
+
+    <span class="keyword">return</span> <span class="literal">false</span>;
+  }
+});
+</code></pre>
+<p>Here’s what’s happening: when you click the tag you want, we start by changing the class name. Then, if there aren’t any tags yet, we create an empty array, and push the tag into the array. Meteor provides us with a <code>Session</code> object, and we add each new tag into that. The session is just a key-value thing so it’s straightforward&nbsp;enough.</p>
+<p>When we submit a new note, quite a bit more stuff takes place. We check the session to see if any tags have been set, and throw an error if there aren’t. Then we insert the note along with the selected tags. That part is actually kind of nice because of how easy it is. However, that’s where we stopped our insertion logic for awhile, until some weird stuff started happening. Turns out, a fun way to leak memory and annoy your users in Meteor is forgetting to clear the session after submission. If you’re not used to web apps, or you had already been coding for ten hours like we were :P, you forget that the browser isn’t going to refresh after submission. You have to clear the session after submission, obviously, since the browser isn’t going to be doing a refresh anytime&nbsp;soon.</p>
+<p>The last two bits of code just change the class of the selected tags to unselected, and then return false (it basically does the same thing as <code>event.preventDefault()</code>). Compared to calling a <code>.toggle()</code> in jQuery and using a for loop to blast through your list looking for <code>.selected</code> tags, this was pretty unfamiliar and took a little while to figure&nbsp;out.</p>
+<p>Well, that’s enough for this time. Be sure to check the project if you’re interested, and definitely check out Meteor if you’ve got a hackathon of any sort coming up. Next week will be a backend-only post about building APIs with Express and RethinkDB, so I’m pretty excited about that. See you next&nbsp;time.</p>
+</section><a href="https://github.com/bentranter/mydeas" target="_blank" class="repo">View Source Code</a>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
