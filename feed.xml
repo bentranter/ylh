@@ -5,14 +5,30 @@
     <atom:link href="http://yearlonghackathon.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://yearlonghackathon.com</link>
     <description>By Ben Tranter</description>
-    <pubDate>Mon, 19 Jan 2015 11:00:00 -0500</pubDate>
+    <pubDate>Sat, 31 Jan 2015 09:00:00 -0500</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
+      <title>Designing in the Browser</title>
+      <link>http://yearlonghackathon.com/articles/week-4/</link>
+      <pubDate>Sat, 31 Jan 2015 09:00:00 -0500</pubDate>
+      <guid isPermaLink="true">http://yearlonghackathon.com/articles/week-4/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;The problem&lt;/strong&gt;: You need to design something that clicks and can be moved, or in my case, you don’t want to pay for an Adobe Creative Cloud subscription when you’re pretty fast at HTML and CSS.&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&quot;-continuous-design-&quot;&gt;“Continuous Design”&lt;/h4&gt;
+&lt;p&gt;Lately I’ve been fascinated by designers who skip Photoshop, Sketch, or any other design tools, and go straight to the browser. The earliest I heard of this was back in 2008 in &lt;a href=&quot;https://signalvnoise.com/posts/1061-why-we-skip-photoshop&quot;&gt;an old Signal vs. Noise blog post&lt;/a&gt;. Since then, I’ve heard of people being faster with HTML and CSS than in Photoshop (see &lt;a href=&quot;http://mrmrs.cc/&quot;&gt;mrmrs&lt;/a&gt;. I figured it was time I give it a try.&lt;/p&gt;
+&lt;p&gt;Obviously if you’re a designer who always designs in the browser, developers are going to love you. There’s no question about what happens when you hover over something, click a link, or perform some other action if you’ve designed in the browser. There’s no guessing padding, margins, border-radiuses, or any other layout elements. It’s easy to tell what the mobile layouts look like because you’ve already created them (if you’re not doing responsive design by default in 2015 then wtf???) Best of all, it prevents you from mocking up stuff in Photoshop that is next to impossible to efficiently recreate in a browser.&lt;/p&gt;
+&lt;h4 id=&quot;startup-auto-signup-whatever&quot;&gt;Startup-Auto-Signup-Whatever&lt;/h4&gt;
+&lt;p&gt;I find myself signing up for random stuff on Product Hunt pretty often, and half the time I don’t even really read what the product is. I just sign up and await their initial email (or launch email if they haven’t launched yet). I figured a lot of people probably do this, which got me thinking: what if there was a service where you paid a set amount of money a month, and were automatically signed up for the latest, most popular startups? You could pick your interests, choose how much you’re willing to spend, and then just sit back and wait for an email that tells you what you’ve signed up for, while some algorithm curates startups for you. It’s like &lt;a href=&quot;https://www.lootcrate.com/&quot;&gt;Lootcrate&lt;/a&gt; for tech and startup enthusiasts. Startup creators would also love it because it’d gurantee them a few users no matter what when they launched.&lt;/p&gt;
+&lt;p&gt;Initially it seems like a good idea, but after thinking about it for awhile it seemed kinda shitty. Either way, I was still gonna mock it up for fun. I decided to mockup the welcome page, signup process, and home screen. I chose &lt;a href=&quot;http://code.kik.com/app/2/index.html&quot;&gt;App.js&lt;/a&gt; and &lt;a href=&quot;http://tachyons.io/&quot;&gt;Tachyons&lt;/a&gt; initially for development, but ended up not using Tachyons for this because of the learning curve. I would really like to try it again as it seems pretty cool.&lt;/p&gt;
+&lt;p&gt;I was hoping it would take me an hour and a half, but it ended up taking about four and a half hours. That’s quite a bit longer than it would’ve taken me in Sketch, but you gotta start somewhere. You can see it in action at &lt;a href=&quot;http://yearlonghackathon.com/demos/autosignup/&quot;&gt;yearlonghackathon/demos/autosignup&lt;/a&gt;. Use Chrome or Firefox’s mobile emulator, look at it on a phone, or at the very least shrink your browser window down for the best experience.&lt;/p&gt;
+&lt;p&gt;I know I’m a bit off-schedule with the posts, but my next post should make up for that. It’s about creating REST APIs with Express and RethinkDB, and consuming them with Ampersand.js. I think it’ll be pretty cool, so watch for that around next Tuesday or so.&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Doing Magic with Meteor at Startup Weekend</title>
-      <link>http://yearlonghackathon.com/articles/startup-weekend/</link>
+      <link>http://yearlonghackathon.com/articles/week-3/</link>
       <pubDate>Mon, 19 Jan 2015 11:00:00 -0500</pubDate>
-      <guid isPermaLink="true">http://yearlonghackathon.com/articles/startup-weekend/</guid>
+      <guid isPermaLink="true">http://yearlonghackathon.com/articles/week-3/</guid>
       <description>&lt;p&gt;&lt;strong&gt;The problem&lt;/strong&gt;: You enter startup weekend and need to build an app that can run everywhere. You’ve basically got a day to implement the functionality, and then another day to implement the design. If this sounds like something you have to do, you might as well use Meteor.&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h4 id=&quot;meteor&quot;&gt;Meteor&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&quot;http://meteor.com&quot;&gt;Meteor&lt;/a&gt; makes a lot of claims, but its basically another full-stack way to write realtime web and mobile apps in JavaScript. It has its own &lt;em&gt;everything&lt;/em&gt;: templating system, layout engine, database integration, package manager, and a lot of other stuff (except it doesn’t have its own router… what the heck?). It also has more magic than I’ve ever seen in any other framework. I don’t actually understand it well enough to write a tutorial about it, so I’ll just talk about my experience with it, and some of the crazy stuff I discovered it can do.&lt;/p&gt;
@@ -83,9 +99,9 @@
     </item>
     <item>
       <title>Templating in Jade, The Good Parts</title>
-      <link>http://yearlonghackathon.com/articles/jade-templating/</link>
+      <link>http://yearlonghackathon.com/articles/week-2/</link>
       <pubDate>Sun, 11 Jan 2015 11:00:00 -0500</pubDate>
-      <guid isPermaLink="true">http://yearlonghackathon.com/articles/jade-templating/</guid>
+      <guid isPermaLink="true">http://yearlonghackathon.com/articles/week-2/</guid>
       <description>&lt;p&gt;&lt;strong&gt;The problem&lt;/strong&gt;: You’re a front-end web designer or developer who knows HTML and CSS who wants to learn more, but you don’t know where to start. Learning a templating language first is a great way to get a feel for the more complciated front-end concepts, and Jade is as good a place to start as any.&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h4 id=&quot;jade-the-good-parts&quot;&gt;Jade: The Good Parts&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&quot;http://jade-lang.com&quot;&gt;Jade&lt;/a&gt; claims to be the template engine for Nodejs. It’s currently maintained by &lt;a href=&quot;http://www.forbeslindesay.co.uk&quot;&gt;Forbes Lindesay&lt;/a&gt; and was originally authored by TJ Holowaychuk (if you haven’t heard of him, just do a Google search and prepare to be amazed). Jade can generate HTML, so let’s look at some Jade input and check out the HTML output:&lt;/p&gt;
@@ -379,9 +395,9 @@ $ git push
     </item>
     <item>
       <title>Hello, World!</title>
-      <link>http://yearlonghackathon.com/articles/hello-world/</link>
+      <link>http://yearlonghackathon.com/articles/week-0/</link>
       <pubDate>Wed, 31 Dec 2014 19:00:00 -0500</pubDate>
-      <guid isPermaLink="true">http://yearlonghackathon.com/articles/hello-world/</guid>
+      <guid isPermaLink="true">http://yearlonghackathon.com/articles/week-0/</guid>
       <description>&lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;: I like making things but I’m too scared to ship them. The solution? I force myself to ship new stuff on a weekly basis for an entire year, and write about it.&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;As long as I’ve been programming (which is around three years as of writing), I’ve always been making things. Most things have been pretty lame and broken, but the creative process is the main reason I like programming. Its like playing with lego, except you can’t step on a program and cut your foot open (at least not literally).&lt;/p&gt;
 &lt;p&gt;One thing I’ve always struggled with is shipping. Out of all the things I’ve made, I’ve never had the confidence to actually release them out into the world. The point of this project is for me to force myself to become better at shipping, as well as to give me platform to share all the dumb stuff I’ve made with the world.&lt;/p&gt;
