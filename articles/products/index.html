@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Startup Auto-Signup Mockup</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="stylesheet" href="app.min.css">
+  </head>
+
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar">
+        <div class="app-title">
+          <span class="app-title-left">Startup Auto-Signup</span>
+          <span class="app-title-right username">Ben</span>
+        </div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <p><strong>Startup Auto-Signup</strong> is a service for anyone interested in tech startups. Simply enter your info, choose the types of products you like, enter the amount you’re willing to spend, and you’ll automatically be signed up for the latest startups.</p>
+          <p>The community can vote on each submited startup, much like Hacker News, Product hunt, etc. You’ll be signed up for the most popular submitted startups, curated by the community, so you won't have to worry about your money being wasted on poor products.</p>
+        </div>
+        <div class="app-section">
+          <h4 class="app-section-title">Sign Up</h4>
+          <input class="app-input" type="text" name="name" placeholder="Name" required>
+          <input class="app-input" type="email" name="email" placeholder="Email" required>
+          <input class="app-input" type="password" name="password" placeholder="Password" required>
+          <div class="app-button" data-target="page2">Submit</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page" data-page="page2">
+      <div class="app-topbar">
+        <div class="app-button left" data-back></div>
+        <div class="app-title">Welcome</div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <p>Thanks for signing up! You can fill out the information below to build your profile and add payment information. If you'd like to start browsing startups immediately, just skip to the bottom of this page and click 'Next'.</p>
+        </div>
+        <div class="app-section">
+
+          <h4 class="app-section-title">Account Info</h4>
+          <input class="app-input" type="text" name="name" placeholder="Name" value="Ben Tranter" required>
+          <input class="app-input" type="email" name="email" placeholder="Email" value="bwtrante@lakeheadu.ca" required>
+          <div class="app-button button-left">Change Password</div>
+
+          <h4 class="app-section-title">Personal Info</h4>
+          <input class="app-input" type="number" name="age" placeholder="Age">
+          <input class="app-input" type="text" name="country" placeholder="Country">
+          <input class="app-input" type="text" name="jobtitle" placeholder="Job Title">
+          <input class="app-input" type="text" name="company" placeholder="Company">
+
+          <h4 class="app-section-title">Interests</h4>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">Software</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">Hardware</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">Design</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">Medical</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">Social</label>
+          </div>
+
+          <h4 class="app-section-title">Billing</h4>
+          <div class="billing-header">
+            <h4 class="billing-safety">This is a secure 128-bit SSL encrypted payment. You're safe.</h4>
+          </div>
+          <div class="billing">
+            <div class="radio">
+              <label><input type="radio" name="optradio">Credit Card</label>
+              <label><input type="radio" name="optradio">Paypal</label>
+            </div>
+            <input class="app-input" type="text" pattern="[0-9]{13,16}" name="creditcard" placeholder="Credit card number">
+            <div class="expiry-date">
+              <h6 class="expiry-date">Expiry Date</h6>
+              <select>
+                <option>Month</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+              </select>
+              /
+              <select>
+                <option>Year</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+              </select>
+            </div>
+            <input class="app-input" type="text" name="cvv" placeholder="CVV">
+            <input class="app-input" type="text" name="customername" placeholder="Full name on card">
+            <div class="billing-info">You will be billed up to <strong>$50.00</strong> every month.</div>
+          </div>
+          <div class="app-button" data-target="page-home">Submit</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page" data-page="page-home">
+      <div class="app-topbar">
+        <div class="app-button left" data-back></div>
+        <div class="app-title">Home</div>
+      </div>
+      <div class="app-content">
+        <div class="home-menu">
+          <a href="" class="internal internal-active">Home</a>
+          <a href="" class="internal">Activity</a>
+          <a href="" class="internal">Software</a>
+          <a href="" class="internal">Hardware</a>
+          <a href="" class="internal">Design</a>
+          <a href="" class="internal">Medical</a>
+          <a href="" class="internal">Social</a>
+        </div>
+        <div class="app-section">
+          <h4 class="app-section-title">Today</h4>
+          <ul class="app-list">
+            <li>1. Letterspace <span class="desc">A new note taking app</span></li>
+            <li>2. UX Recipe <span class="desc">Discover UX project tools</span></li>
+            <li>3. GitLab <span class="desc">An open source GitHub clone</span></li>
+            <li>4. Fanout <span class="desc">Realtime push made simpl</span></li>
+            <li>5. ShuttleCloud <span class="desc">Import from email providers</span></li>
+          </ul>
+        </div>
+        <div class="app-section">
+          <h4 class="app-section-title">Yesterday</h4>
+          <ul class="app-list">
+            <li>1. Leanlab <span class="desc">Record &amp; develop startup ideas</span></li>
+            <li>2. Pointer <span class="desc">Reading cub for developers</span></li>
+            <li>3. Tachyons <span class="desc">Utilities for in-browser prototyping</li>
+            <li>4. Clrs <span class="desc">Better HTML default colours</li>
+            <li>5. Hydra <span class="desc">HDR-by-default iOS photography</li>
+          </ul>
+          <div class="app-button">Older</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    <script>
+      App.controller('home', function (page) {
+        // put stuff here
+      });
+
+      App.controller('page2', function (page) {
+        // put stuff here
+      });
+
+      App.controller('page-home', function (page) {
+        // put stuff here
+      });
+
+      try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+    </script>
+  </body>
+</html>
