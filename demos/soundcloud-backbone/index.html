@@ -17,19 +17,19 @@
         </a>
       </nav>
       <h3 class='h3 center dark-gray'><%= description %></h3>
-      <img src='<%= avatar_url %>' class='full-width'/>
+      <img src='<%= avatar_url %>' id='track-album-art' class='full-width'/>
     </script>
     <div id='profile'></div>
 
     <audio id='music' class='table mt1 px1' controls='controls' autoplay></audio>
 
     <script id='songsTemplate' type='text/template'>
-      <div class='songs bg-light-gray mb1 rounded' data-id='<%= id %>'>
-        <h4 class='h4 h0-responsive caps m0 py1 regular'><%= title %></h4>
+      <div class='songs bg-light-gray mb1 rounded inline-block' data-id='<%= id %>'>
+        <h4 class='h4 h0-responsive caps m0 py1 px2 regular inline-block'><%= title %></h4>
       </div>
     </script>
 
-    <div id='songs' class='center p1'></div>
+    <div id='songs' class='inertial-scroll center p1'></div>
 
   </main>
 
