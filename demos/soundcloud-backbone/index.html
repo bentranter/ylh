@@ -7,16 +7,25 @@
   <link rel='stylesheet' href='main.css'>
 </head>
 <body>
-  <nav class='center clearfix white bg-dark-gray'>
-    <h1 class='cleafix m0 py2'>WHISPERSPEAK</h1>
-  </nav>
+  
   <main>
 
+    <script id='profileTemplate' type='text/template'>
+      <nav class='center clearfix white bg-dark-gray'>
+        <a href='<%= permalink_url %>'>
+          <h1 class='cleafix m0 py2'><%= username %></h1>
+        </a>
+      </nav>
+      <h3 class='h3 center dark-gray'><%= description %></h3>
+      <img src='<%= avatar_url %>' class='full-width'/>
+    </script>
+    <div id='profile'></div>
+
+    <audio id='music' class='table mt1 px1' controls='controls' autoplay></audio>
+
     <script id='songsTemplate' type='text/template'>
-      <div class='bg-light-gray mb1 rounded'>
+      <div class='songs bg-light-gray mb1 rounded' data-id='<%= id %>'>
         <h4 class='h4 h0-responsive caps m0 py1 regular'><%= title %></h4>
-        <audio src='<%= stream_url %>?client_id=8ec20fb5cf443b6a8370954c522149c3' controls='controls'>HTML5 audo is supported in your browser.</audio>
-        <a href='<%= permalink_url %>' class='button py1 m1 button-blue'>Listen on Soundcloud</a>
       </div>
     </script>
 
