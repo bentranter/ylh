@@ -45,8 +45,11 @@
     <div class='ml16' id='main'>
 
     <!-- Main Header -->
-      <header class='bg-blue'>
+      <header class='bg-blue relative'>
         <h1 class='h1 m0 px3 py3 white center caps'>SpeedStudy Docs</h1>
+        <button class='fixed top-0 left-0 ml1 mt1 bg-blk2 rounded' id='toggleSidebar'>
+          <svg width='18px' height='22px' viewBox="0 0 32 32" style="fill:white"><path d="M3 8 A3 3 0 0 0 9 8 A3 3 0 0 0 3 8 M12 6 L28 6 L28 10 L12 10z M3 16 A3 3 0 0 0 9 16 A3 3 0 0 0 3 16 M12 14 L28 14 L28 18 L12 18z M3 24 A3 3 0 0 0 9 24 A3 3 0 0 0 3 24 M12 22 L28 22 L28 26 L12 26z "></path></svg>
+        </button>
       </header>
 
       <!-- Main Content -->
@@ -274,7 +277,9 @@
 
         if (sidebar.classList.contains('w16')) {
           sidebar.classList.remove('w16');
+          sidebar.classList.add('sm-hide');
         } else {
+          sidebar.classList.remove('sm-hide');
           sidebar.classList.add('w16');
         }
 
