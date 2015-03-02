@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <title>SpeedStudy Docs</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <link rel='stylesheet' href='main.css'>
+  </head>
+
+  <body>
+
+    <!-- Sidebar -->
+    <aside class='w16 fixed scroll-y h100 bg-lg1' id='sidebar'>
+      <h3 class='h3 m0 px1 py2 center bg-lg0'>Navigation</h3>
+      <ul class='list-reset ml1 mr1'>
+
+        <h4 class='h4 center'>Introduction</h4>
+        <li><a href='#about'>About</a></li>
+        <li><a href='#gettingstarted'>Getting Started</a></li>
+        <li><a href='#installation'>Installation Instructions</a></li>
+
+        <h4 class='h4 center'>Architecture</h4>
+        <li><a href='#overview'>Overview</a></li>
+        <li><a href='#security'>Security</a></li>
+        <li><a href='#endpoints'>API Endpoints</a></li>
+        <li><a href='#models'>Data Models</a></li>
+        <li><a href='#oopandroid'>Android Architecture</a></li>
+
+        <h4 class='h4 center'>Design</h4>
+        <li><a href='#server'>Server</a></li>
+        <li><a href='#client'>Web Client</a></li>
+        <li><a href='#android'>Android Client</a></li>
+        <li><a href='#ios'>iOS Client</a></li>
+
+        <h4 class='h4 center'>Code</h4>
+        <li><a href='#codeandroid'>Android</a></li>
+        <li><a href='#codeserver'>Server</a></li>
+        <li><a href='#codeweb'>Web and iOS</a></li>
+
+      </ul>
+    </aside>
+
+    <div class='ml16' id='main'>
+
+    <!-- Main Header -->
+      <header class='bg-blue'>
+        <h1 class='h1 m0 px3 py3 white center caps'>SpeedStudy Docs</h1>
+      </header>
+
+      <!-- Main Content -->
+      <main class='bg-white'>
+        <div class='container px2'>
+
+          <p class='m0 mt2 px2 py2 center bg-lg1'>All the code for this project is available at <a href='https://github.com/bentranter/course-notes'>github.com/bentranter/course-notes</a></p>
+
+          <h2 class='h2 caps'>Introduction</h2>
+          <h3 class='h3'><a name='about'>About</a></h3>
+          <p>SpeedStudy can be summed up as, <span class='italic'>"the way to get straight A's studying for three minutes a day"</span>. SpeedStudy aims to enable students to be able to spend around three minutes/day studying, while retaining around 95% of the content in their notes. SpeedStudy combines two modern approaches to speeding up learning: <span class='bold'>speed reading and spaced repetition</span>. We'll see more about how these approaches can help students learn and study much faster shortly.</p>
+          <p>From a technical perspective, SpeedStudy aims to be an extremely lean service. That means, blazingly fast load times, as-small-as-possible codebase, modular design pattterns, simple architecture, and small data footprint. Since we're essentially a service that stores text via a REST API, we can create an architecture that is extremely efficient, both in terms of cost and bandwidth.</p>
+
+          <h3 class='h3'><a name='gettingstarted'>Getting Started</a></h3>
+          <p class='small bg-red white py1 px1 rounded'>WARNING: Only run this on Windows if you are very brave! While this <span class='italic'>will</span> run on Windows, it is designed to run on Mac OS X or Linux.</p>
+          <p>Before installing and running this application, you'll need to have a few things installed:</p>
+          <ul>
+            <li>Python (v2.7 recommended, v3.x.x not supported, comes installed by default on Mac OS X and Linux)</li>
+            <li>A C++ compiler (both Clang and GCC will work)</li>
+            <li>Node.js v10.28 (you can install that <a href='http://nodejs.org/'>here</a>)</li>
+            <li>Git (version control software, install <a href='http://git-scm.com/book/en/v2/Getting-Started-Installing-Git'>here</a>)</li>
+            <li>NPM (this will come istalled by default when you install Node.js)</li>
+            <li>RethinkDB (you can install that <a href='http://rethinkdb.com/'>here</a>)</li>
+          </ul>
+
+          <h3 class='h3'><a name='installation'>Installation Instructions</a></h3>
+          <p>Once you've downloaded everything listed above, you'll need to run a few commands from your command prompt or terminal. Open a window, and run:</p>
+          <pre><code>
+  $ rethinkdb
+          </code></pre>
+          <p>That will start RethinkDB. You can view the RethinkDB admin panel by going to <code>0.0.0.0:8080</code> in your browser.</p>
+          <p>Once RethinkDB is running, open a second window in your command prompt or terminal, and run the following commands:</p>
+          <pre>
+            <code>
+  $ git clone https://github.com/bentranter/course-notes.git
+  $ cd course-notes && cd web
+  $ npm install
+  $ npm start</code>
+          </pre>
+          <p>This will clone the project's source code from GitHub, install all the project's dependencies, and start the server. If you get errors, make sure RethinkDB is running on your computer somewhere. If you see an error originating from a process called "Node-Gyp", make sure that Python 2.7 is installed on your computer and in your $PATH. If everything is working, you should be able to point your browser to <code>0.0.0.0:3000</code> and see the web UI up and running.</p>
+          <p>To run the tests, open a <span class='bold'>third</span> window in your command prompt or terminal, and navigate to the <code>tests</code> directory. Once you're in there, run the command <code>$ jasmine-node .</code> . That will run all the tests automatically, and inform you of any failures. <span class='italic'>Note: The test coverage is around 30% right, and doesn't cover every possible case. We're working on improving the coverage.</span></p>
+
+          <h2 class='h2 caps'>Architecture</h2>
+          <h3 class='h3'><a name='overview'>Overview</a></h3>
+          <p>SpeedStudy is multiple client-server application. That means that different clients can connect to the same server. This works by communicating over HTTP via our REST API. As you know, HTTP stands for Hypertext Transfer Protocol. Our application sticks to the four main HTTP verbs: <code>GET, POST, PUT and DELETE</code>. As you probaly also know, REST stands for Representational State Transfer. It is a stateless, client-server, cacheable communication protocol - perfect for a client-server app with multiple clients.</p>
+          <p>Our server runs on Node.js, and uses the <a href='http://expressjs.com/'>Express</a> framework as middleware. We use a NoSQL database called RethinkDB to store our data. The web client uses Backbone.js as a framework (<span class='italic'>update: the web client has been moved to Exoskeleton.js, a lighter-weight implementation of the Backbone framework</span>). There are two mobile clients: one for iOS, and one for Android. The iOS client is in development, but so far id written in Swift. The Android app is written in Java, and relies on the Android SDK and OKHttp by Square for handling HTTP requests.</p>
+
+          <h3 class='h3'><a name='security'>Security</a></h3>
+          <p>For password security, we use a <span class='italic'>one-way hashing algorithm</span> called bcrypt. We also salt each hash. Bcrypt is a nice algorithm, because it takes around two seconds to execute, so it is very strong against brute force and collision attacks.</p>
+          <p>We use UUIDs for each database entries' id to enforce uniqueness, no matter what dataset it might be in (the odds of creating two identical UUIDs is approximately one in 17 trillion, given sufficient entropy).</p>
+          <p>We use JSON web tokens, and force all communication with the server to be over HTTPS using SSL (to encrypt all traffic). When a user signs up or logs in, they're given a JSON web token that is valid for seven days. They then must send their token with every request to our API. JSON web tokens are 150-character longs strings that are signed and encrypted using a secret that only the server is aware of, so they cannot be decrypted and tampered with by a client.</p>
+          <p>Each user's username resides within their token, and the server requests a user's username <span class='italic'>from the token</span>, to ensure that a user can only see their own notes.</p>
+          <p>Anytime an operation that is considered to be a security risk occurs (deleting large amounts of notes, changing a password, etc), and email is sent to that user informing them of that action, so that if it was not done by them, they are at least made aware of the particular action.</p>
+        
+          <h3 class='h3'><a name='endpoints'>API Endpoints</a></h3>
+          <p>There are two types of API Endpoints: <span class='bold'>secure</span> and <span class='bold'>insecure</span>.</p>
+          <p>A <span class='bold'>secure</span> endpoint is one that is protected by our authorization middleware (that is, that endpoint requires a valid token to be sent with the request). An <span class='bold'>insecure</span> endpoint is one that doesn't require a token to be sent with the request.</p>
+          <h4 class='h4'>Insecure Endpoints</h4>
+          <ul>
+            <li><code>/api/signup</code> - <span class='bold'>HTTP method:</span> <code>POST</code>. Allows a user to enter their desired username and password to signup for our service. Returns a valid JSON web token for that username.</li>
+            <li><code>/api/login</code> - <span class='bold'>HTTP method:</span> <code>POST</code>. Allows a user to enter their username and password to login to our service. Returns a valid JSON web token for that username.</li>
+          </ul>
+          <h4 class='h4'>Secure Endpoints</h4>
+          <ul>
+            <li><code>/api/notes</code> - <span class='bold'>HTTP method:</span> <code>GET</code> Allows a user to retrieve all their notes.</li>
+            <li><code>/api/notes</code> - <span class='bold'>HTTP method:</span> <code>POST</code> Allows a user to create a new note. Returns the note created.</li>
+            <li><code>/api/notes/:id</code> - <span class='bold'>HTTP method:</span> <code>GET</code> Allows a user to retrieve a single note by id.</li>
+            <li><code>/api/notes/:id</code> - <span class='bold'>HTTP method:</span> <code>PUT</code> Allows a user to update or change a single note by id.</li>
+            <li><code>/api/notes/:id</code> - <span class='bold'>HTTP method:</span> <code>DELETE</code> Allows a user to delete a single note by id.</li>
+          </ul>
+          <h4 class='h4'>Making a Request</h4>
+          <p>A sample POST request would look something like this:</p>
+          <pre><code>
+  POST /api/signup HTTP/1.1
+  Host: studyfast.com
+  Cache-Control: no-cache
+  Content-Type: application/x-www-form-urlencoded
+
+  username=YourUserName&password=YourPassword
+          </code></pre>
+          <p>You <span class='bold'>must</span> specify that the content-type is application/x-www-form-urlencoded when you make a POST or PUT request, otherwise the request will fail.</p>
+          <p>As we mentioned above, when you makwe a request to a secure endpoint, you must include your token. A token can be send in three different ways:</p>
+          <ol>
+            <li>As an <code>X-Access-Token</code> in the request header.</li>
+            <li>As an <code>accessToken</code> in the request body.</li>
+            <li>As an <code>accessToken</code> in the URL parameters, for example: <code>/api/notes?accessToken=yoursupercrazylongtoken</code>.</li>
+          </ol>
+
+          <h3 class='h3'><a name='models'>Data Models</a></h3>
+          <p>As of right now, our data models are simple:</p>
+          <h4 class='h4'>User</h4>
+          <ul>
+            <li>username: String</li>
+            <li>password: String</li>
+          </ul>
+          <h4 class='h4'>Notes</h4>
+          <ul>
+            <li>title: String</li>
+            <li>subtitle: String</li>
+            <li>content: String</li>
+            <li>folder: String</li>
+            <li>dateCreated: Date</li>
+            <li>dateUpdated: Date</li>
+            <li>timesReviewed: Number</li>
+          </ul>
+          <h4 class='h3'><a name='oopandroid'>Android Architecture</a></h3>
+          <h4 class='h4'>Purpose</h4>
+          <p>The mobile application stores files from the server onto the mobile device. It requires the server to respond with a JSON Object token when a login is requested. It also requires the server to respond with a JSON Object containing all of the users documents stored on the server when a request containing the token is sent to the server. The mobile application must be able to form the POST and GET requests sent to the server, as well as deal with the response from the server or any error that occurs. It must have the ability to access all of the files that have been taken from the server and stored locally.</p>
+          <h4 class='h4'>General Priorities</h4>
+          <p>The main priority of the application is that it be easy to use for the user. This includes having the application respond in a way that the user would expect when the user interacts with it. The user should be able to easily navigate their way through the application. This also includes not giving a user the opportunity to break the application. The application is also designed to be easily expanded as well as to be easily maintained, handling changes on the server side.  The classes for updating and logging in should be designed in a way that allows the application to do more tasks with the information it receives from the server.</p>
+          <img class='block center mx-auto' src='img/uml-android.png' />
+          <h4 class='h4'>Major Architecture Issues</h4>
+          <p>One design issue was in what way to deal with the information coming in from the server, and how to store both the content from each document as well as the data related to each document such as its id, date last modified, etc. One solution was to store the incoming data as a String, then parse through the String and create a bunch of ArrayLists containing all the information. One issue with this was that the characters used to separate the information could also be part of the information, which left a possibility of errors in the parsing. One possible solution to this problem was using regular expressions and lexically parsing through, but a much simpler solution was to just store the information from the server as an array of JSON objects, and create new JSON objects to store locally containing the information that needed to be stored.</p>
+          <p>Another design issue was setting up menus and changing menus depending on if the user logs in, or if an update fails, etc. This was an issue because networking tasks must be run asynchronously from the UI thread, and retrieving a response was less then intuitive. The solution was to create a singleton of global variables, then on any activity that could modify the menu bar, set a variable telling the application to wait and see if the menu needs to be change, and have the networking tasks set a variable indicating if the menu needs to be changed or not, and to stop waiting.</p>
+          <h4 class='h4'>Details of the Architecture</h4>
+          <p>The application uses a REST API to make requests to the server. The requests are formed by an OkHttpClient, open source software by Squareup. The response is a JSON object. Doing a POST request with a valid username and password to the server login will return a token, token expiration date and the username. These, along with the password sent in the request, are saved in the applications key-value storage. Sending an GET request to the servers notes endpoint along with a valid token will reply with all of the users documents on the server.</p>
+          <p>Once the client has received all the documents from the server, it compares their lastModified date with the lastModified date of the documents saved locally. For each file from the server that has been updated more recently, the local version of the document will be rewritten with the content of the document from the server. The file containing information about the documents its then updated to reflect these changes.</p>
+
+          <h2 class='h2 caps'>Design</h2>
+          <h3 class='h3'><a name='server'>Server</a></h3>
+          <p>The server has an extremely simple design. Essentially, it is two files: one with some startup code for the server that handles the database connection, which port to serve on, the API endpoint names, and whether to enable development mode or production mode, and the other handles the server's application logic.</p>
+          <p>The applicatino consists of the model schemas, the authentication middleware, and the request/response handling for the API endpoints. There are two schemas: one for the <span class='italic'>user</span> and one for the <span class='italic'>notes</span>.</p>
+          <p>The primary key for the user is the username. The primary key for the notes is the id. A user has a one-to-many relationship with the notes (relations in a NoSQL database? Weird, I know, but it speeds up our queries massively).</p>
+          <p>The authenticatio middleware is two functions.</p>The first is one that executes before the 
+
+          <h3 class='h3'><a name='client'>Web Client</a></h3>
+          <p>Our web client is currently under development and is at best, a huge mess. We use an MVC approach, and complete documentation will be added once more progress is made on the web client.</p>
+
+          <h3 class='h3'><a name='android'>Android Client</a></h3>
+          <p>Each Activity (screen / task of the application) is defined as a class. When something on the screen is tapped, such as a button or dragging a bar, a method in the class will be called.</p>
+          <p>SpeedStudy launches into the class AppLaunch, where it will check to see if the users username and password are stored. If they are not, it will launch the login screen. If the username and password are found, it will check to see if the token used to authenticate with the server needs to be updated. This includes checking if the token exists, and if the token is not expired. If it fails one of these checks, then the MainActivity will get launched with the instruction to attempt login with the stored credentials. If the token makes it through the checks, the MainActivity will launch with the instruction to update the locally stored files, using the stored token.</p>
+          <p>The LoginScreen has 2 buttons: "Login" and "Continue without Login" which correspond to the methods "login" and "skipLogin" in the LoginScreen class. Tapping one of these button will call the corresponding method, and either launch MainActivity with the instruction to not login, or to attempt login with the entered username and password.</p>
+          <p>The MainActivity makes calls to Login and Update. These methods will either do their job with no notification, or prompt an error if one occurs. When the user selects an action that could cause the menu to be updated, the activity will wait for a global variable to change that indicates if a change in the menu should occur. When the user selects Login the application launches the LoginScreen activity. If Logout is selected, the application will delete the stored username, password, token and tokenExpiration and launch the LoginScreen activity. Tapping on the "Open Local Files Browser" button will call the method openLocalFileBrowser, which launches the LocalFilesBrowser Activity.</p>
+          <p>The LocalFilesBrowser finds all the folders and documents in the root of the application storage and sorts them, with folders dislaying before documents, then sorted alphabetically. Selecting a folder will launch another instance of LocalFilesBrowser, displaying the folders and documents inside the selected folder. Selecing a Document will launch DocumentLoader, passing it the data from the document as a string.</p>
+          <p>The DocumentLoader will create 2 tabs, one responsible for displaying the entire content of the document, and one responsible for displaying the speed reader activity. Selecting a tab launches a new instance of the activity corresponding to the tab. When the activity being displayed is DisplayDocument, it will display the full data as plaintext. If the data extends below the screen, the user can slide their finger up the screen to make it scroll down.</p>
+          <p>On the SpeedReader Activity, the buttons on the screen call the methods moveBar, slowDown, SpeedUp, startPauseOrResume depending on the button tapped. These control how the text is rotated through on the screen.</p>
+          <p>The Login and Updates Classes are called asynchronously by MainActivity. Both of them Set global variables as well as store information that is used by the application. They make use of the Error class to store errors received from the attempting communication with the server. This Error is used in determining if the MainActivity should be prompted with an Error such as "invalid login information".</p>
+          <p>Global variables are passed around by the Singleton GlobalApp.</p>
+          <h4 class='h4'>Functionality Implemented to Date</h4>
+          <ul>
+            <li>Application automatically loads to either the login screen, or the main activity depending on if login information has been saved.</li>
+            <li>'Continue without Login' on the login page will bring the application to the main activity correctly.</li>
+            <li>'Login' on the login page will launch main activity telling it to login using the entered information.</li>
+            <li>The correct menu loads on Main Activity, and correctly changes after login and logout.</li>
+            <li>Selecing 'Login' menu in main activity correctly brings up the login activity.</li>
+            <li>Selecing 'Login' menu in main activity correctly brings up the login activity.</li>
+            <li>After 'Login' has been selected on the login activity, the application will attempt to login to the server with the credentials the user entered, then saving the token, token expiration date and login credentials locally if successful.</li>
+            <li>Selecing 'Update' from the menu attempts to retrieve user information from the server using the stored token, then compare against locally stored files and update required files. Will prompt if an error occurs.</li>
+            <li>Selecting 'Open Local File Browser' will launch the activity to browse through files stored on the device.</li>
+            <li>Selecting a folder on the device will open a file browsing activity to browse within the folder.</li>
+            <li>Selecting a document will open an activity to view the contents of the document, with tabs allowing the user to switch between displaying the entire contents on the speed reader.</li>
+            <li>Selecing the speed reader tab will display the speed reader activity, which will display part of the document text, buttons for speed up, slow down and start/pause, as well as a slider bar to set the speed.</li>
+            <li>Tapping start will make the displayed text rotate through chunks of the document, showing at max 10 characters at a time, at the speed designated by the user. This will stop on the last line of the document.</li>
+            <li>Tapping the pause button will stop the text from changing until the pause (resume) button is pressed again.</li>
+            <li>Dragging the slide bar will change the speed that the text changes.</li>
+            <li>Tapping the + and - buttons will increase and decrease the speed respectively, stopping at max and min speeds.</li>
+          </ul>
+          <img class='block center mx-auto' src='img/uml-android-full.png' />
+          
+          <h3 class='h3'><a name='ios'>iOS Client</a></h3>
+          <p>The iOS client is nothing more than a few blank views at the moment, but complete documentation will be created as development progresses.</p>
+
+          <h2 class='h2 caps'>Code</h2>
+          <h3 class='h3'><a name='codeandroid'>Android</a></h3>
+          <p>The Android code docs were generated with Doxygen, and appear <a href='/android' class='bold'>here</a>.</p>
+
+          <h3 class='h3'><a name='codeserver'>Server</a></h3>
+          <h3 class='h3'><code>app.js</code></h3>
+          <p>This is the main entry point of the server.</p>
+          <p><code>var moduleName = require('module-name');</code></p>
+          <p>This is how modules are imported in Node.js.</p>
+          <p><code>app.set('settingName', options);</code></p>
+          <p>This handles Express's settings.</p>
+          <p><code>app.use('middlewareName', options);</code></p>
+          <p>This handles what middleware we use with Express.</p>
+          <p><code>app.get('route', authFunctionName, functionName);</code></p>
+          <p>This defines a route at an endpoint, and allows you to write a function that defines how to handle it. It also let's you specify an HTTP verb, in this case, it's "GET".</p>
+          <p><code>app.post('route', authFunctionName, functionName);</code></p>
+          <p>This defines a route at an endpoint, and allows you to write a function that defines how to handle it. It also let's you specify an HTTP verb, in this case, it's "POST".</p>
+          <p><code>app.put('route', authFunctionName, functionName);</code></p>
+          <p>This defines a route at an endpoint, and allows you to write a function that defines how to handle it. It also let's you specify an HTTP verb, in this case, it's "PUT".</p>
+          <p><code>app.delete('route', authFunctionName, functionName);</code></p>
+          <p>This defines a route at an endpoint, and allows you to write a function that defines how to handle it. It also let's you specify an HTTP verb, in this case, it's "DELETE".</p>
+
+          <h3 class='h3'><code>routes/api.js</code></h3>
+          <p>This is where all the functionality of the API comes from.</p>
+          <p><code>var Model = thinky.createModel('modelName', options);</code></p>
+          <p>Creates a model and allows you to specify the options. This is covered in full in <span class='bold'><a href='http://thinky.io/'>Thinky</a>'s </span>docs.</p>
+          <p><code>Model.ensureIndex('indexName');</code></p>
+          <p>Let's you specify a model's index.</p>
+          <p><code>Model.pre('actionName', callback);</code></p>
+          <p>Let's you specify an action to do before another action is called. Useful for calling functions before actions like "save", or "update".</p>
+          <p><code>login(request, response);</code></p>
+          <p>Get's a login token based on your username. Returns a JSON web token as a string. API: private, HTTP: GET.</p>
+          <p><code>authorizeToken(request, response, next);</code></p>
+          <p>Handles the token based auth. Get's a token from the request, decodes it with the secret, checks if it's valid, and handles possible errors. API: private.</p>
+          <p><code>signUp(request, response);</code></p>
+          <p>Creates a new user in the database. Returns a JSON web token as a string. API: public, HTTP: GET.</p>
+          <p><code>listNotes(request, response);</code></p>
+          <p>Lists a user's notes. Returns an array of objects containing their notes. API: public, HTTP: GET.</p>
+          <p><code>getNote(request, response);</code></p>
+          <p>Get's a user's note by id. Returns an object containing the requested note. API: public, HTTP: GET.</p>
+          <p><code>addNote(request, response);</code></p>
+          <p>Creates a new note. Returns an object containing the note created. API: public, HTTP: POST.</p>
+          <p><code>updateNote(request, response);</code></p>
+          <p>Updates a note. Returns an object containing the updated note. API: public, HTTP: PUT.</p>
+          <p><code>deleteNote(request, response);</code></p>
+          <p>Deletes a note. Returns a success message as an object. API: public, HTTP: DELETE.</p>
+
+          <h3 class='h3'><a name='codeweb'>Web and iOS</a></h3>
+          <p>The web client and iOS client don't have enough code written yet that isn't spaghetti code to warrant documenting it at this stage, but documentation will be added as code is written and refactored.</p>
+
+        </div>
+      </main>
+    </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      var toggleSidebar = function() {
+
+        var sidebar = document.getElementById('sidebar');
+        var main = document.getElementById('main');
+
+        if (sidebar.classList.contains('w16')) {
+          sidebar.classList.remove('w16');
+        } else {
+          sidebar.classList.add('w16');
+        }
+
+        if (main.classList.contains('ml16')) {
+          main.classList.remove('ml16');
+        } else {
+          main.classList.add('ml16');
+        }        
+      };
+
+      document.getElementById('toggleSidebar').addEventListener('click', toggleSidebar);
+
+    })();
+  </script>
+  </body>
+</html>
