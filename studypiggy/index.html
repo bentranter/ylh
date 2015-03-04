@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <title>Study Piggy</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <link rel='stylesheet' href='main.css'>
+  </head>
+
+  <body>
+
+    <!-- Top Bar -->
+    <div class='z2 fixed top-0 full-width bg-white bbl py1'>
+      <a href='#!' id='accountToggle' class='blk2 px2 left m0 caps mr1'>Account 
+        <svg height='16px' width='16px' viewBox='0 0 32 32' style='fill:currentcolor'><path d='M4 8 H28 L16 26 z '></path></svg>
+      </a>
+
+      <span class='sm-show-i'>
+        <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 1</a>
+        <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 2</a>
+        <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 3</a>
+        <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 4</a>
+      </span>
+
+      <a href='#!' id='sidebarToggle' class='right gray1 blk2-h mr2'>
+        <svg width='22px' height='22px' viewBox="0 0 32 32" style="fill:currentcolor"><path d="M3 8 A3 3 0 0 0 9 8 A3 3 0 0 0 3 8 M12 6 L28 6 L28 10 L12 10z M3 16 A3 3 0 0 0 9 16 A3 3 0 0 0 3 16 M12 14 L28 14 L28 18 L12 18z M3 24 A3 3 0 0 0 9 24 A3 3 0 0 0 3 24 M12 22 L28 22 L28 26 L12 26z "></path></svg>
+      </a>
+
+      <a href='#!' id='searchToggle' class='px2 right m0 gray2 blk2-h'>
+        <svg height='22px' width='22px' viewBox="0 0 32 32" style="fill:currentcolor"><path d="M12 0 A12 12 0 0 0 0 12 A12 12 0 0 0 12 24 A12 12 0 0 0 18.5 22.25 L28 32 L32 28 L22.25 18.5 A12 12 0 0 0 24 12 A12 12 0 0 0 12 0 M12 4 A8 8 0 0 1 12 20 A8 8 0 0 1 12 4  "></path></svg>
+      </a>
+
+    </div>
+
+    <!-- Mobile-only navigation -->
+    <span class='z4 fixed left-0 right-0 mobile-nav-offset bbl sm-hide nowrap overflow-scroll-inertial'>
+      <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 1</a>
+      <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 2</a>
+      <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 3</a>
+      <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 4</a>
+      <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 1</a>
+      <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 2</a>
+      <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 3</a>
+      <a href='#!' class='ml2 small caps gray2 blk2-h bold'>Note 4</a>
+    </span>
+
+    <!-- Sidebar -->
+    <aside class='z1 fixed top-offset h100 w220 bg-lg1 brl' id='sidebar'>
+
+        
+
+      <div id='account' class='hide e0e0e0 px1 py1 bbl'>
+        <h4 class='center light m0 mb1'>Sign In</h4>
+        <input type='text' class='fieldset-reset bl full-width' placeholder='Username' />
+        <input type='password' class='fieldset-reset bl full-width m0' placeholder='Password' />
+      </div>
+
+      <a href='' class='h5 blk2 p1 block'>History</a>
+      <ul class='list-reset m0'>
+        <li>
+          <a href='' class='h5 m0 px2 py1 block gray1 gray0-h '>First Note View</a>
+        </li>
+        <li>
+          <a href='' class='h5 m0 px2 py1 block  gray1 gray0-h'>Second Note View</a>
+        </li>
+        <li>
+          <a href='' class='h5 blue bg-blue-h lg1-h p1 block'>Biology</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Writing Area -->
+
+    <!--
+
+      Try wrapping it in a div with 0 margin but padding-right 220px??
+
+    -->
+    <main class='z1 fixed full-width top-offset overflow-scroll h100 top-0 bottom-0 ml220 fit help px2 py2' id='main'>
+
+      <!-- Search Bar -->
+      <input id='search' class='hide block bsl mx-auto m0 mr2 fieldset-reset rounded' type='text' placeholder='Search...' />
+
+      <h2 contentEditable='true' id='noteTitle' data-ph='Title'></h2>
+      <p contentEditable='true' id='noteBody' data-ph='Start writing...'></p>
+      
+    </main>
+
+    <!-- <main class='z2 h100 bg-white ml220 margin-top-offset px2' id='main'>
+
+      <h2 contentEditable='true' id='noteTitle' data-ph='Title'></h2>
+      <p contentEditable='true' id='noteBody' data-ph='Start writing...'></p>
+      
+    </main> -->
+
+  <!-- Scripts -->  
+  <script src='exoskeleton.js'></script>
+  <script src='main.js'></script>
+
+  </body>
+</html>
