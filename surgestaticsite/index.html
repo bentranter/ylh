@@ -19,13 +19,20 @@
       </span>
 
       <span class='center col col-4'>
-        <div class='rounded bg-white'>
+        <div class='rounded bg-white top-bar-bs'>
           <p class='small'>Writing: new-drake-album-review.md</p>
         </div>
       </span>
 
       <span class='col col-4 px1'>
-       <p class='small right-align'>Right-Menu Items</p>
+        <ul class='icon-group-wrapper right top-bar-bs'>
+          <li id='toggleLeft' class='icon icon-group-wrapper-brl'>
+            <img src='icon/left-window-toggle.svg' />
+          </li>
+          <li id='toggleRight' class='icon'>
+            <img src='icon/right-window-toggle.svg' />
+          </li>
+        </span>
       </span>
 
     </div>
@@ -80,18 +87,18 @@
     <main class='z1 absolute overflow-y-auto top-bar-offset bottom-0 left-0 sidebar-offset right-0' id='main'>
 
       <!-- Markdown Editor Area -->
-      <div class='col col-6 bll brl'>
+      <div class='col col-6 bll brl' id='middleSection'>
 
         <div class='bg-white bbl px1 py-status-bar'>
           <p class='smaller m0'>Markdown Area</p>
         </div>
 
-        <textarea id='postMarkdown' class='p2 full-viewport' autofocus></textarea>
+        <textarea id='postMarkdown' class='p2 full-viewport absolute-center' autofocus></textarea>
 
       </div>
 
       <!-- Preview Area -->
-      <div class='col col-6'>
+      <div class='col col-6' id='rightSection'>
 
         <div class='bg-white bbl px1 py-status-bar'>
           <p class='smaller m0'>Rendered Markdown</p>

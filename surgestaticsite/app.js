@@ -1,6 +1,3 @@
-var ENTER_KEY = 13;
-var ESCAPE_KEY = 27;
-
 (function() {
 
   'use strict';
@@ -17,9 +14,29 @@ var ESCAPE_KEY = 27;
     document.getElementById('postHTML').innerHTML = postHTML;
   });
 
-  function togglePreview() {
+  function toggleRight() {
 
-    var toggleButton = document.getElementById('togglePreview');
+    var rightSection = document.getElementById('rightSection');
+    var middleSection = document.getElementById('middleSection');
+    var toggleButton = document.getElementById('toggleRight');
+
+    rightSection.classList.toggle('hide');
+    middleSection.classList.toggle('col-12');
+    toggleButton.classList.toggle('icon-active');
   }
+
+  function toggleLeft() {
+
+    var leftSection = document.getElementById('sidebar');
+    var middleSection = document.getElementById('main');
+    var toggleButton = document.getElementById('toggleLeft');
+
+    leftSection.classList.toggle('hide');
+    middleSection.classList.toggle('sidebar-offset');
+    toggleButton.classList.toggle('icon-active');
+  }
+
+  document.getElementById('toggleRight').addEventListener('click', toggleRight);
+  document.getElementById('toggleLeft').addEventListener('click', toggleLeft);
 
 })();
