@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <title>Scrolling Portfolio</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+
+  <body>
+
+    <!-- Header -->
+    <header class='bg-gradient p2'>
+      <h1 class='h1 huge center white text-shadow light'>Name</h1>
+      <h3 class='h2 mb3 center off-white text-shadow light'>Fullstack Python &amp; JavaScript Developer</h2>
+    </header>
+
+    <!-- Menu/Contact Info -->
+    <div class='bg-white bbl'>
+      <ul class='list-reset overflow-auto nowrap m0 cntr p2 center'>
+        <li class='inline-block m0 mr2'>Phone: <span class='gray'>(123) 456-7890</span></li>
+        <li class='inline-block m0 mr2'>Email: <span class='gray'>email@email.com</span></li>
+        <li class='inline-block m0 mr2'>Github: <a href='https://www.github.com/siecje'class='m0'>@siecje</a></li>
+        <li class='inline-block m0 mr2'>Twitter: <a href='https://www.twitter.com/@siecje'class='m0'>@siecje</a></li>
+      </ul>
+    </div>
+
+    <!-- Description -->
+    <div class='bbl bg-silver p2'>
+      <div class='cntr'>
+        <h3 class='h3 m0 center py2 regular'>Description of self here</h3>
+        <p class='gray mt2'>Which is to say, I want to be your next full-stack dev. HTTP requests, ORM wrangling, query optimizations, login systems, password security, latency compensation, DOM repainting, CSS optimizations, and semantic HTML are all things I can get down with.</p>
+        <div class='relative mx-auto center block'>
+          <button id='openContact' class='button center mb3'>Contact Me</button>
+        </div>
+        <div class='outer-form relative mx-auto center block'>
+          <form id='contact' class='hide inner-form absolute z102 contact shadow bg-silver bl rounded p2'>
+            <input type='text' class='block full-width' placeholder='Name' />
+            <textarea placeholder='Message' class='block full-width'></textarea>
+            <input type='submit' class='button full-width' value='Send' />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Timeline Thing -->
+    <main class='cntr p2'>
+      <h3 class='h3 center regular mb3'>Projects &amp; Experience</h3>
+      <div class='relative btl brl col col-12 md-col-6 px2'>
+        <span class='date-left small-caps bl bg-silver py1 px2 rounded gray light'>January</span>
+        <h4 class='h4 mt3'>Genesis</h4>
+        <p>Bringing "blogging like a hacker" to non-hackers. Genesis is a desktop app built with Node-Webkit for blog authoring in Markdown, live previewing in a browser, and deploying to a CDN, all in the click of a button.</p>
+      </div>
+      <div class='cf'></div>
+      <div class='relative btl bll col-right col-12 md-col-6 px2'>
+        <span class='date-right small-caps bl bg-silver py1 px2 rounded gray light'>November</span>
+        <h4 class='h4 mt3'>Something Else</h4>
+        <p>Bringing "blogging like a hacker" to non-hackers. Genesis is a desktop app built with Node-Webkit for blog authoring in Markdown, live previewing in a browser, and deploying to a CDN, all in the click of a button.</p>
+      </div>
+      <div class='cf mb3'></div>
+    </main>
+
+    <!-- Do we even need this -->
+    <footer class='bg-dark-gradient'>
+      <p class='p2 m0 small gray center'>Some footer text or whatever. I actually dunno what would be good to put here.</p>
+    </footer>
+
+    <script src='main.js'></script>
+  </body>
+
+</html>
