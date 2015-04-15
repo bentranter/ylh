@@ -12,9 +12,4 @@
     e.preventDefault();
     form.classList.toggle('hide');
   });
-
-  showMore.addEventListener('click', function(e) {
-    e.preventDefault();
-    more.classList.toggle('hide');
-  });
 })();
