@@ -1396,13 +1396,21 @@ input[type=range] {
 .date-left {
   position: absolute;
   top: -16px;
-  left: 1em;
+  left: 0;
 }
 
 .date-right {
   position: absolute;
   top: -16px;
-  right: 1em;
+  right: 0;
+}
+
+.date-arrow {
+  position: absolute;
+  top: -13px;
+  left: 50%;  
+  margin-left: -16px;
+  z-index: 102;
 }
 
 .shadow {
@@ -1425,4 +1433,16 @@ input[type=range] {
   top: -1em;  
   left: 50%;  
   margin-left: -120px; 
+}
+
+@media (min-width: 40em) {
+  .pr2r {
+    padding-right: 1em;
+  }
+}
+
+@media (min-width: 40em) {
+  .pl2l {
+    padding-left: 1em;
+  }
 }
