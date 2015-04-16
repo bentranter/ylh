@@ -1,15 +1,18 @@
 (function() {
   'use strict';
 
-  // My latest obsession: object caching
-  var button = document.getElementById('openContact');
-  var form = document.getElementById('contact');
-  var showMore = document.getElementById('showMore');
-  var more = document.getElementById('more');
+  var button = document.getElementById('copyEmail');
+  var copyEmail = new ZeroClipboard(button);
+  var message = document.getElementById('message');
 
-  // Listen to those damn clicky clicks
-  button.addEventListener('click', function(e) {
-    e.preventDefault();
-    form.classList.toggle('hide');
+  copyEmail.on('ready', function(e) {
+    console.log('Ready to copy');
+    copyEmail.on('aftercopy', function(e) {
+      message.classList.toggle('hide');
+      setTimeout(function() {
+        message.classList.toggle('hide');
+      }, 3000);
+      console.log('Copied!');
+    });
   });
 })();

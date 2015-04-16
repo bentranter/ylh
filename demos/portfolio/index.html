@@ -37,15 +37,13 @@
         <h3 class='h3 m0 center py2 regular'>Description of self here</h3>
         <p class='gray mt2'>Which is to say, I want to be your next full-stack dev. HTTP requests, ORM wrangling, query optimizations, login systems, password security, latency compensation, DOM repainting, CSS optimizations, and semantic HTML are all things I can get down with.</p>
         <div class='relative mx-auto center block'>
-          <button id='openContact' class='button center mb3'>Contact Me</button>
+          <button id='copyEmail' data-clipboard-text='email@email.com' class='button center mb3'>Contact Me</button>
         </div>
 
         <!-- Dumb Form -->
         <div class='outer-form relative mx-auto center block'>
-          <form id='contact' class='hide inner-form absolute z102 contact shadow bg-silver bl rounded p2'>
-            <input type='text' class='block full-width' placeholder='Name' />
-            <textarea placeholder='Message' class='block full-width'></textarea>
-            <input type='submit' class='button full-width' value='Send' />
+          <form id='message' class='hide inner-form absolute z102 contact shadow bg-silver bl rounded'>
+            <p class='m0 px1 py2'>Copied email address to clipboard!</p>
           </form>
         </div>
 
@@ -110,6 +108,8 @@
       </ul>
     </footer>
 
+    <script src='ZeroClipboard.Core.min.js'></script>
+    <script src='ZeroClipboard.min.js'></script>
     <script src='main.js'></script>
   </body>
 
